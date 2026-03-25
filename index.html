@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nikitha Keshan — Software Developer, System Automation Creator, Web Developer." />
+  <title>Nikitha Keshan | Portfolio</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0e0c'/><text x='50' y='72' font-size='70' font-family='serif' fill='%23d4c2a5' text-anchor='middle'>N</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* =========================================
+       CSS VARIABLES: THEME SYSTEM
+       ========================================= */
+    :root {
+      /* Dark Theme (Default) */
+      --bg: #0b0e0c;          
+      --bg-soft: #121713;     
+      --surface: rgba(22, 28, 24, 0.65); 
+      --surface-2: rgba(30, 38, 32, 0.95);
+      --surface-3: rgba(255, 255, 255, 0.03);
+      
+      --text: #e8ece9;        
+      --muted: #9ba89f;       
+      --muted-2: #6b7a70;
+      
+      --line: rgba(181, 201, 186, 0.12);
+      --line-strong: rgba(181, 201, 186, 0.25);
+      
+      --primary: #759279;     
+      --primary-2: #a2bba5;   
+      --accent: #d4c2a5;      
+      
+      --btn-text: #000000;
+      
+      --nav-bg: rgba(14, 18, 15, 0.6);
+      --nav-bg-scrolled: rgba(11, 14, 12, 0.85);
+      --nav-bg-solid: rgba(14, 18, 15, 0.95);
+      --backdrop: rgba(5, 8, 6, 0.8);
+      --input-bg: rgba(0, 0, 0, 0.2);
+      --glow-inset: inset 0 0 80px rgba(255,255,255,0.02);
+
+      --shadow: 0 30px 80px rgba(0,0,0,0.6);
+      --shadow-soft: 0 15px 40px rgba(5, 10, 6, 0.4);
+      
+      --radius-xl: 32px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 8px;
+      
+      --container: 1240px;
+      --nav-h: 84px;
+      --transition: 400ms cubic-bezier(0.25, 1, 0.35, 1);
+      
+      --font-sans: "DM Sans", sans-serif;
+      --font-display: "Playfair Display", serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    [data-theme="light"] {
+      /* Light Theme (Editorial / Paper) */
+      --bg: #f7f5f0;          
+      --bg-soft: #efece5;     
+      --surface: rgba(255, 255, 255, 0.65); 
+      --surface-2: rgba(255, 255, 255, 0.95);
+      --surface-3: rgba(0, 0, 0, 0.04);
+      
+      --text: #1a201c;        
+      --muted: #5c6b61;       
+      --muted-2: #8b9c90;
+      
+      --line: rgba(0, 0, 0, 0.08);
+      --line-strong: rgba(0, 0, 0, 0.15);
+      
+      --primary: #52755a;     
+      --primary-2: #3a5741;   
+      --accent: #a3885c;      
+      
+      --btn-text: #ffffff;
+
+      --nav-bg: rgba(247, 245, 240, 0.7);
+      --nav-bg-scrolled: rgba(239, 236, 229, 0.9);
+      --nav-bg-solid: rgba(247, 245, 240, 0.98);
+      --backdrop: rgba(247, 245, 240, 0.8);
+      --input-bg: rgba(255, 255, 255, 0.5);
+      --glow-inset: inset 0 0 80px rgba(0,0,0,0.03);
+
+      --shadow: 0 30px 80px rgba(0,0,0,0.06);
+      --shadow-soft: 0 15px 40px rgba(0,0,0,0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+    /* =========================================
+       GLOBAL & AMBIENT NATURAL BACKGROUND
+       ========================================= */
+    body {
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background-color: var(--bg);
+      overflow-x: hidden;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(117, 146, 121, 0.08), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(212, 194, 165, 0.05), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(117, 146, 121, 0.03), transparent 60%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      mix-blend-mode: overlay;
+    }
+
+    ::selection { background: rgba(117, 146, 121, 0.3); color: var(--text); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+    img { max-width: 100%; display: block; }
+    button, a, input, textarea, select { font: inherit; outline: none; }
+    button { border: 0; background: none; color: inherit; cursor: none; }
+    a { color: inherit; text-decoration: none; cursor: none; }
+    ul { list-style: none; }
+
+    .container { width: min(var(--container), calc(100% - 40px)); margin-inline: auto; }
+
+    /* =========================================
+       TYPOGRAPHY SYSTEM
+       ========================================= */
+    .mono {
+      font-family: var(--font-mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--primary-2);
+      font-weight: 300;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 24px;
+    }
+
+    .section-tag i { color: var(--accent); font-size: 1.1rem; }
+
+    .title-xl, .title-lg, .title-md, .title-sm {
+      font-family: var(--font-display);
+      line-height: 1.1;
+      font-weight: 400;
+    }
+
+    .title-xl { font-size: clamp(3.2rem, 7vw, 6.5rem); letter-spacing: -0.02em; }
+    .title-lg { font-size: clamp(2.4rem, 4vw, 4rem); letter-spacing: -0.01em; }
+    .title-md { font-size: clamp(1.6rem, 2.2vw, 2.2rem); }
+    .title-sm { font-size: 1.25rem; font-weight: 500; }
+    
+    .italic-serif { font-style: italic; font-weight: 500; color: var(--primary-2); }
+
+    .lead { font-size: clamp(1.05rem, 1.4vw, 1.15rem); line-height: 1.8; color: var(--muted); max-width: 68ch; font-weight: 300; }
+    .muted { color: var(--muted); }
+    .small { font-size: 0.95rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+    /* =========================================
+       LAYOUT GRIDS & SURFACES
+       ========================================= */
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%);
+      pointer-events: none;
+    }
+
+    .card-pad { padding: 32px; }
+
+    /* =========================================
+       COMPONENTS (BUTTONS & CHIPS)
+       ========================================= */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      cursor: none;
+      white-space: nowrap;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--btn-text);
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(117, 146, 121, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-2);
+      box-shadow: 0 15px 40px rgba(117, 146, 121, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line-strong);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary-2);
+      background: rgba(117, 146, 121, 0.05);
+    }
+
+    .btn-ghost {
+      min-height: 44px; padding: 0 20px;
+      border: 1px solid transparent; color: var(--muted);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-ghost.active, .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--line-strong);
+      background: var(--surface-3);
+    }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 38px; padding: 0 16px;
+      border: 1px solid var(--line); border-radius: var(--radius-sm);
+      background: var(--surface-3); color: var(--muted);
+      font-size: 0.9rem; font-weight: 400;
+      transition: var(--transition);
+    }
+    
+    a.chip:hover {
+      background: rgba(117, 146, 121, 0.1);
+      border-color: var(--primary-2);
+      color: var(--text);
+    }
+
+    .chip i { color: var(--primary-2); font-size: 1.1rem; transition: color var(--transition);}
+
+    /* =========================================
+       NAVIGATION & THEME TOGGLE
+       ========================================= */
+    .site-header { position: sticky; top: 0; z-index: 100; padding-top: 24px; }
+
+    .nav-shell {
+      width: min(calc(var(--container) + 40px), calc(100% - 24px));
+      margin-inline: auto; height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      transition: var(--transition);
+    }
+
+    .nav-shell.scrolled {
+      background: var(--nav-bg-scrolled);
+      border-color: var(--line-strong);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+
+    .brand-mark {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-sm);
+      background: var(--surface-3); border: 1px solid var(--line);
+      font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .brand-meta { display: flex; flex-direction: column; gap: 2px; justify-content: center;}
+    .brand-title { font-weight: 500; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.02em; line-height: 1;}
+    .brand-sub { color: var(--muted-2); font-size: 0.82rem; font-weight: 300; line-height: 1;}
+
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+
+    .nav-link {
+      min-height: 42px; padding: 0 18px; border-radius: var(--radius-sm);
+      color: var(--muted); transition: var(--transition);
+      font-size: 0.95rem; display: flex; align-items: center;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--text); background: var(--surface-3); }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    .theme-toggle {
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border-radius: var(--radius-sm); border: 1px solid transparent;
+      color: var(--muted); font-size: 1.2rem; transition: var(--transition);
+    }
+    .theme-toggle:hover { color: var(--text); background: var(--surface-3); border-color: var(--line); }
+
+    .mobile-toggle {
+      display: none; width: 44px; height: 44px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); background: var(--surface-3); cursor: none;
+    }
+    .mobile-toggle span, .mobile-toggle::before, .mobile-toggle::after {
+      content: ""; display: block; width: 20px; height: 1.5px;
+      border-radius: 2px; margin-inline: auto; background: var(--text);
+      transition: var(--transition);
+    }
+    .mobile-toggle::before { margin-bottom: 6px; }
+    .mobile-toggle::after { margin-top: 6px; }
+    .mobile-toggle.active span { opacity: 0; }
+    .mobile-toggle.active::before { transform: translateY(7.5px) rotate(45deg); }
+    .mobile-toggle.active::after { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .mobile-panel {
+      position: fixed; inset: calc(var(--nav-h) + 36px) 12px auto; z-index: 90;
+      padding: 24px; border-radius: var(--radius-md);
+      background: var(--nav-bg-solid); border: 1px solid var(--line-strong);
+      backdrop-filter: blur(24px); box-shadow: var(--shadow);
+      transform: translateY(-16px); opacity: 0; visibility: hidden;
+      transition: var(--transition);
+    }
+    .mobile-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .mobile-panel .nav-link { width: 100%; justify-content: flex-start; display: inline-flex; min-height: 48px; margin-bottom: 8px; }
+
+    /* =========================================
+       PAGE ROUTING & REVEALS (Updated for single scroll)
+       ========================================= */
+    .page-shell { padding: 40px 0 60px; }
+    .page { display: block; padding-top: 60px; } /* Changed from display: none to block */
+    
+    .section { padding: 60px 0 80px; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 800ms ease, transform 800ms ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* =========================================
+       HERO SECTION 
+       ========================================= */
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px;
+      align-items: center; min-height: calc(100vh - 160px);
+    }
+
+    .hero-copy { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+
+    .hero-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      height: 100%; min-height: 600px;
+    }
+
+    .organic-frame {
+      position: relative; width: min(100%, 520px); height: 620px;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--glow-inset), var(--shadow-soft);
+      backdrop-filter: blur(30px);
+      display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px;
+      animation: morph 15s ease-in-out infinite alternate;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    @keyframes morph {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+      50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+      100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    }
+
+    .organic-blob {
+      position: absolute; width: 300px; height: 300px;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      opacity: 0.15; filter: blur(40px);
+      animation: float 10s ease-in-out infinite;
+    }
+    .blob-1 { top: -50px; left: -50px; }
+    .blob-2 { bottom: -50px; right: -50px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 40px); }
+    }
+
+    .field-notes {
+      position: relative; z-index: 2; width: 100%;
+      background: var(--nav-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+
+    .field-notes-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 16px;
+    }
+
+    .field-list { display: grid; gap: 16px; }
+    .field-item { display: flex; flex-direction: column; gap: 4px; }
+    .field-key { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted-2); text-transform: uppercase; letter-spacing: 1px;}
+    .field-value { font-size: 0.95rem; color: var(--text); font-weight: 300; }
+
+    /* =========================================
+       SECTION ARCHITECTURE
+       ========================================= */
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+    .section-head .lead { max-width: 50ch; margin-bottom: 8px;}
+
+    .icon-box {
+      width: 48px; height: 48px; min-width: 48px;
+      border-radius: 50%; 
+      display: grid; place-items: center;
+      background: var(--surface-3); border: 1px solid var(--line);
+      color: var(--primary-2); font-size: 1.4rem;
+    }
+
+    .stack-list, .principle-list { display: grid; gap: 16px; height: 100%;}
+    
+    .stack-item {
+      padding: 24px; border-radius: var(--radius-md);
+      border: 1px solid var(--line); background: var(--surface);
+      display: flex; align-items: flex-start; gap: 20px;
+      transition: var(--transition);
+      flex: 1;
+    }
+    .stack-item:hover { transform: translateX(6px); border-color: var(--primary); background: var(--surface-2); }
+
+    .highlight-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; }
+
+    /* =========================================
+       ABOUT SECTION SPECIFICS 
+       ========================================= */
+    .about-profile-layout {
+      display: grid; grid-template-columns: 240px 1fr; gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-3);
+    }
+
+    .about-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; 
+      filter: grayscale(20%) contrast(1.1); 
+      transition: var(--transition);
+    }
+    .card-pad:hover .about-image { filter: grayscale(0%) contrast(1); }
+
+    @media (max-width: 768px) {
+      .about-profile-layout { grid-template-columns: 1fr; }
+      .about-image-wrapper { aspect-ratio: 16/9; max-height: 300px; }
+    }
+
+    /* =========================================
+       SKILLS (INTERACTIVE SPOTLIGHT)
+       ========================================= */
+    .spotlight-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start;}
+    
+    .skill-groups { display: grid; gap: 24px; }
+    .skill-group { padding: 28px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface); }
+    .skill-group-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-pill {
+      min-height: 40px; padding: 0 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+      transition: var(--transition); display: flex; align-items: center;
+    }
+    .skill-pill:hover, .skill-pill.active {
+      color: var(--bg); background: var(--primary-2); border-color: var(--primary-2); transform: translateY(-2px);
+    }
+
+    .skill-spotlight-wrapper { position: sticky; top: 120px; height: max-content; z-index: 10; }
+
+    .skill-spotlight {
+      display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+      padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--surface), rgba(14, 18, 15, 0.05));
+      max-height: calc(100vh - 140px); overflow-y: auto; scrollbar-width: none;
+    }
+    .skill-spotlight::-webkit-scrollbar { display: none; }
+    
+    .skill-spotlight-head { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 20px;}
+    
+    .skill-meter { width: 100%; height: 4px; border-radius: 2px; background: var(--line-strong); overflow: hidden; margin-top: 24px; }
+    .skill-meter span { display: block; height: 100%; width: 0; background: var(--primary); transition: width 800ms ease; }
+
+    .bullet-list { display: grid; gap: 14px; margin-top: 20px; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+    .bullet-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px; }
+
+    /* =========================================
+       PROJECTS
+       ========================================= */
+    .project-toolbar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+
+    .project-card {
+      padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--line);
+      background: var(--surface); transition: var(--transition);
+      display: flex; flex-direction: column; height: 100%;
+    }
+    .project-card:hover {
+      transform: translateY(-8px); border-color: var(--primary); background: var(--surface-2);
+      box-shadow: var(--shadow);
+    }
+
+    .project-visual {
+      position: relative; height: 260px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); overflow: hidden; margin-bottom: 24px;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+    }
+    
+    .project-visual i { font-size: 4rem; color: var(--line-strong); transition: var(--transition); }
+    .project-card:hover .project-visual i { transform: scale(1.1); color: var(--muted); }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .project-tag {
+      padding: 6px 12px; border-radius: 4px; border: 1px solid var(--line);
+      background: var(--surface-3); color: var(--muted); font-size: 0.8rem;
+    }
+
+    .project-links { margin-top: auto; padding-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;} 
+    .text-link {
+      display: inline-flex; align-items: center; gap: 8px; color: var(--primary-2);
+      font-weight: 500; transition: gap var(--transition), color var(--transition); border-bottom: 1px solid transparent; padding-bottom: 2px;
+    }
+    .text-link:hover { gap: 12px; color: var(--text); border-color: var(--text); }
+
+    /* =========================================
+       EXPERIENCE TIMELINE
+       ========================================= */
+    .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    
+    .timeline-column { 
+      display: flex; flex-direction: column; gap: 32px; 
+      position: relative; padding-left: 32px; 
+    }
+
+    .timeline-column::before {
+      content: ""; position: absolute; left: 4px; top: 12px; bottom: 0; width: 2px; 
+      background: var(--line-strong);
+    }
+
+    .timeline-card {
+      position: relative; padding: 28px;
+      border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
+      display: flex; flex-direction: column; flex: 1;
+    }
+    
+    .timeline-card::before {
+      content: ""; position: absolute; left: -32px; top: 32px; width: 10px; height: 10px; 
+      border-radius: 50%; background: var(--primary); border: 2px solid var(--bg);
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem;
+      color: var(--muted-2); margin-bottom: 12px; font-family: var(--font-mono); text-transform: uppercase;
+    }
+    .eyebrow .status { color: var(--accent); }
+    
+    .timeline-list { margin-top: 16px; display: grid; gap: 12px; }
+    .timeline-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300;}
+    .timeline-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px;}
+
+    .foundation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;}
+    .foundation-card {
+      padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--line);
+      background: var(--surface-3); display: flex; flex-direction: column; height: 100%;
+    }
+    .foundation-card h4 { font-family: var(--font-sans); font-size: 1rem; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;}
+    .foundation-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; font-weight: 300;}
+    
+    @media (max-width: 640px) {
+      .foundation-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================
+       CONTACT FORM & SOCIAL GRID
+       ========================================= */
+    .contact-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: flex-start;}
+    
+    .contact-list { display: grid; gap: 16px; margin-top: 32px; }
+    .contact-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface);
+    }
+    .contact-item i.main-icon { font-size: 1.5rem; color: var(--primary-2); }
+
+    .social-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;
+    }
+
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border-radius: var(--radius-sm);
+      background: var(--surface-3); border: 1px solid var(--line);
+      color: var(--text); font-size: 0.9rem; font-weight: 500;
+      transition: var(--transition); justify-content: center;
+    }
+    .social-btn i { font-size: 1.2rem; color: var(--primary-2); transition: var(--transition);}
+    .social-btn:hover { background: var(--line-strong); border-color: var(--primary-2); transform: translateY(-2px); }
+
+    .contact-form { display: grid; gap: 24px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .field { position: relative; }
+    .field label { display: block; margin-bottom: 10px; color: var(--muted); font-size: 0.9rem; }
+    
+    .input, .textarea {
+      width: 100%; border: 1px solid var(--line); background: var(--input-bg);
+      color: var(--text); border-radius: var(--radius-sm); padding: 18px;
+      transition: var(--transition); font-weight: 300;
+    }
+    .input { min-height: 56px; }
+    .textarea { min-height: 180px; resize: vertical; }
+    
+    .input:focus, .textarea:focus {
+      border-color: var(--primary); background: var(--surface-3); outline: none; box-shadow: 0 0 0 2px rgba(117, 146, 121, 0.2);
+    }
+
+    /* =========================================
+       FOOTER & MODALS
+       ========================================= */
+    .footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 40px;}
+    .footer-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-links { display: flex; gap: 24px; }
+
+    /* Modal */
+    .backdrop {
+      position: fixed; inset: 0; background: var(--backdrop);
+      backdrop-filter: blur(10px); z-index: 110; opacity: 0; visibility: hidden; transition: var(--transition);
+    }
+    .backdrop.show { opacity: 1; visibility: visible; }
+    
+    .modal {
+      position: fixed; inset: 50% auto auto 50%; width: min(800px, calc(100% - 32px));
+      max-height: calc(100vh - 64px); overflow: auto; transform: translate(-50%, calc(-50% + 30px));
+      z-index: 120; opacity: 0; visibility: hidden; transition: var(--transition);
+    }
+    .modal.show { opacity: 1; visibility: visible; transform: translate(-50%, -50%); }
+    
+    .modal-card {
+      border-radius: var(--radius-lg); border: 1px solid var(--line);
+      background: var(--bg-soft); box-shadow: var(--shadow);
+    }
+    .modal-head, .modal-body, .modal-foot { padding: 32px; }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .modal-foot { border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    
+    .modal-close {
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+      display: grid; place-items: center; font-size: 1.2rem; color: var(--muted);
+      transition: var(--transition);
+    }
+    .modal-close:hover { color: var(--text); border-color: var(--text); transform: rotate(90deg); }
+
+    /* Toast */
+    .toast {
+      position: fixed; right: 24px; bottom: 24px; z-index: 130;
+      padding: 16px 24px; border-radius: var(--radius-sm); border: 1px solid var(--primary);
+      background: var(--surface-2); color: var(--text); box-shadow: var(--shadow-soft);
+      transform: translateY(20px); opacity: 0; visibility: hidden; transition: var(--transition);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; visibility: visible; }
+
+    /* Custom Cursor */
+    .cursor-dot, .cursor-ring {
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 140; border-radius: 50%;
+      opacity: 0; transition: opacity 200ms ease;
+    }
+    .cursor-dot { width: 6px; height: 6px; background: var(--primary-2); transform: translate(-50%, -50%); }
+    .cursor-ring {
+      width: 40px; height: 40px; border: 1px solid var(--line-strong);
+      transform: translate(-50%, -50%); transition: width 200ms ease, height 200ms ease, background 200ms ease;
+    }
+    .cursor-ring.active { width: 60px; height: 60px; background: rgba(162, 187, 165, 0.1); border-color: transparent;}
+
+    .hide-mobile { display: inline-flex; }
+
+    /* =========================================
+       RESPONSIVE DESIGN
+       ========================================= */
+    @media (max-width: 1100px) {
+      .hero, .highlight-grid, .spotlight-layout, .contact-layout, .timeline-wrap, .grid-2 { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .organic-frame { height: 500px; }
+      .skill-spotlight-wrapper { position: static; } 
+    }
+    @media (max-width: 920px) {
+      .nav-links, .hide-mobile { display: none; }
+      .mobile-toggle { display: grid; place-items: center; }
+      .field-row, .grid-3 { grid-template-columns: 1fr; }
+      .section-head, .footer-bar { flex-direction: column; align-items: flex-start; }
+      .title-xl { font-size: clamp(2.8rem, 10vw, 4rem); }
+      .timeline-column { padding-left: 20px; }
+      .timeline-column::before { left: 4px; }
+      .timeline-card::before { left: -21px; } 
+    }
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 32px); }
+      .nav-shell { padding-inline: 16px; }
+      .brand-sub { display: none; }
+      .hero-actions, .project-links, .chip-row, .social-grid { width: 100%; }
+      .social-grid { grid-template-columns: 1fr;}
+      .hero-actions .btn, .project-links .text-link { width: 100%; justify-content: center;}
+      .card-pad, .skill-spotlight, .project-card, .skill-group, .modal-head, .modal-body, .modal-foot { padding: 24px; }
+      .timeline-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="nav-shell" id="navShell">
+      <a href="#home" class="brand" data-route-link="home" aria-label="Go to home page">
+        <div class="brand-mark">N</div>
+        <div class="brand-meta">
+          <span class="brand-title">Nikitha Keshan</span>
+          <span class="brand-sub">Developer & System Builder</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#home" class="nav-link active" data-route-link="home">Overview</a>
+        <a href="#about" class="nav-link" data-route-link="about">About</a>
+        <a href="#skills" class="nav-link" data-route-link="skills">Craft</a>
+        <a href="#projects" class="nav-link" data-route-link="projects">Work</a>
+        <a href="#experience" class="nav-link" data-route-link="experience">History</a>
+        <a href="#contact" class="nav-link" data-route-link="contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"><i class="ph-light ph-sun"></i></button>
+        <a href="NikithaKeshan.pdf" class="btn btn-secondary hide-mobile" download><i class="ph-light ph-download-simple"></i> Resume</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+      <a href="#home" class="nav-link active" data-route-link="home">Overview</a>
+      <a href="#about" class="nav-link" data-route-link="about">About</a>
+      <a href="#skills" class="nav-link" data-route-link="skills">Craft</a>
+      <a href="#projects" class="nav-link" data-route-link="projects">Work</a>
+      <a href="#experience" class="nav-link" data-route-link="experience">History</a>
+      <a href="#contact" class="nav-link" data-route-link="contact">Contact</a>
+      <a href="NikithaKeshan.pdf" class="btn btn-secondary" download style="width:100%; margin-top: 16px; justify-content:center;">Download Resume</a>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="container">
+      
+      <section class="page" data-page="home" id="home">
+        <div class="hero section">
+          <div class="hero-copy reveal">
+            <div class="section-tag mono"><i class="ph-fill ph-plant"></i> Cultivating practical digital solutions</div>
+
+            <div class="hero-title-wrap">
+              <h1 class="title-xl">
+                I build clean websites and <span class="italic-serif">smart systems</span> that foster growth.
+              </h1>
+
+              <p class="lead">
+                I am Nikitha Keshan — a software developer focused on the intersection of elegant web design and seamless business operations. I create tools that remove friction and interfaces that feel natural.
+              </p>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary" data-route-link="projects">Explore Work</a>
+              <a href="#contact" class="btn btn-secondary" data-route-link="contact">Start a Conversation</a>
+            </div>
+            
+            <div class="chip-row" style="margin-top: 16px;">
+              <div class="chip"><i class="ph-light ph-map-pin"></i> Colombo, Sri Lanka</div>
+              <div class="chip"><i class="ph-light ph-code"></i> Full Stack & UI/UX</div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" style="transition-delay: 200ms;">
+            <div class="organic-frame">
+              <div class="organic-blob blob-1"></div>
+              <div class="organic-blob blob-2"></div>
+              
+              <div class="field-notes">
+                <div class="field-notes-head">
+                  <span class="mono"><i class="ph-light ph-notebook"></i> Field Notes / 01</span>
+                </div>
+                <div class="field-list">
+                  <div class="field-item">
+                    <span class="field-key">Focus Area</span>
+                    <span class="field-value">Web Architecture & Automation</span>
+                  </div>
+                  <div class="field-item">
+                    <span class="field-key">Core Tools</span>
+                    <span class="field-value">C#, React, Node, SQL, Python</span>
+                  </div>
+                  <div class="field-item">
+                    <span class="field-key">Approach</span>
+                    <span class="field-value">Minimalist design, robust backend logic.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="section reveal">
+          <div class="section-head">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-sparkle"></i> Design Philosophy</div>
+              <h2 class="title-lg">Rooted in utility and aesthetics.</h2>
+            </div>
+            <p class="lead">A great system should feel invisible. My goal is to craft digital experiences that are as beautiful as they are functional, bridging the gap between raw data and human interaction.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card card-pad">
+              <div class="icon-box" aria-hidden="true"><i class="ph-light ph-drop"></i></div>
+              <h3 class="title-sm" style="margin: 24px 0 12px;">Fluid Experiences</h3>
+              <p class="small">Smooth transitions, intuitive layouts, and responsive designs that adapt naturally to any device.</p>
+            </article>
+            <article class="card card-pad">
+              <div class="icon-box" aria-hidden="true"><i class="ph-light ph-tree-structure"></i></div>
+              <h3 class="title-sm" style="margin: 24px 0 12px;">Deep Roots</h3>
+              <p class="small">Clean architecture, scalable APIs, and structured databases that ensure long-term stability.</p>
+            </article>
+            <article class="card card-pad">
+              <div class="icon-box" aria-hidden="true"><i class="ph-light ph-arrows-out-line-vertical"></i></div>
+              <h3 class="title-sm" style="margin: 24px 0 12px;">Scalable Logic</h3>
+              <p class="small">Automations and microservices built to grow with the business, reducing manual load over time.</p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" data-page="about" id="about">
+        <div class="section">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-user"></i> About</div>
+              <h2 class="title-lg">A pragmatic builder with a holistic view.</h2>
+            </div>
+          </div>
+
+          <div class="highlight-grid">
+            <article class="card card-pad reveal">
+              
+              <div class="about-profile-layout">
+                <div class="about-image-wrapper">
+                    <img src="1760549322866.png" alt="Nikitha Keshan Portrait" class="about-image">
+                </div>
+                
+                <div>
+                  <div class="mono" style="margin-bottom: 16px;"><i class="ph-light ph-book-open"></i> The Narrative</div>
+                  <h3 class="title-md" style="margin-bottom: 20px;">Merging academic theory with ground-level execution.</h3>
+                  <p class="small" style="margin-bottom: 16px;">I am Nikitha Keshan, an aspiring Software Engineer focused on web development, software development, and system automation. My career goal is to become a professional software engineer who builds practical digital solutions that solve real business problems.</p>
+                  <p class="small" style="margin-bottom: 16px;">I have experience creating websites, developing internal tools, and building automation systems that improve workflows, reduce manual work, and support business operations.</p>
+                  <p class="small">I enjoy turning ideas and processes into useful, modern digital systems.</p>
+                </div>
+              </div>
+
+            </article>
+
+            <article class="card card-pad reveal" style="transition-delay: 100ms;">
+              <div class="mono" style="margin-bottom: 16px;"><i class="ph-light ph-compass"></i> Guiding Principles</div>
+              <div class="principle-list">
+                <div class="stack-item" style="padding: 20px;">
+                  <div>
+                    <h3 class="title-sm" style="margin-bottom: 8px;">Clarity Over Clutter</h3>
+                    <p class="small">Design should guide the user effortlessly.</p>
+                  </div>
+                </div>
+                <div class="stack-item" style="padding: 20px;">
+                  <div>
+                    <h3 class="title-sm" style="margin-bottom: 8px;">Automate the Mundane</h3>
+                    <p class="small">Technology should free humans for creative work.</p>
+                  </div>
+                </div>
+                <div class="stack-item" style="padding: 20px;">
+                  <div>
+                    <h3 class="title-sm" style="margin-bottom: 8px;">Build for Longevity</h3>
+                    <p class="small">Avoid shortcuts. Architect sustainable solutions.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="skills" id="skills">
+        <div class="section">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-hammer"></i> Craft</div>
+              <h2 class="title-lg">Tools cultivated for impact.</h2>
+            </div>
+            <p class="lead">Click on any discipline to explore how I apply it conceptually and practically across the full stack.</p>
+          </div>
+
+          <div class="spotlight-layout">
+            <div class="skill-groups reveal">
+              
+              <div class="skill-group">
+                <div class="skill-group-head">
+                  <h3 class="title-sm"><i class="ph-light ph-code" style="margin-right:8px; color:var(--primary)"></i> Languages</h3>
+                </div>
+                <div class="skill-tags">
+                  <button class="skill-pill active" data-skill="csharp">C#</button>
+                  <button class="skill-pill" data-skill="python">Python</button>
+                  <button class="skill-pill" data-skill="java">Java</button>
+                  <button class="skill-pill" data-skill="javascript">JavaScript</button>
+                  <button class="skill-pill" data-skill="typescript">TypeScript</button>
+                  <button class="skill-pill" data-skill="c">C / C++</button>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group-head">
+                  <h3 class="title-sm"><i class="ph-light ph-layout" style="margin-right:8px; color:var(--primary)"></i> Frameworks & Web</h3>
+                </div>
+                <div class="skill-tags">
+                  <button class="skill-pill" data-skill="react">React & Next.js</button>
+                  <button class="skill-pill" data-skill="blazor">.NET Blazor</button>
+                  <button class="skill-pill" data-skill="htmlcss">HTML & CSS</button>
+                  <button class="skill-pill" data-skill="tailwind">Tailwind & UI</button>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group-head">
+                  <h3 class="title-sm"><i class="ph-light ph-database" style="margin-right:8px; color:var(--primary)"></i> Backend & Databases</h3>
+                </div>
+                <div class="skill-tags">
+                  <button class="skill-pill" data-skill="dotnet">.NET Core</button>
+                  <button class="skill-pill" data-skill="nodejs">Node.js</button>
+                  <button class="skill-pill" data-skill="django">Django / Python</button>
+                  <button class="skill-pill" data-skill="sql">SQL / MySQL</button>
+                  <button class="skill-pill" data-skill="nosql">PostgreSQL / Mongo</button>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-group-head">
+                  <h3 class="title-sm"><i class="ph-light ph-devices" style="margin-right:8px; color:var(--primary)"></i> Mobile, Design & Tools</h3>
+                </div>
+                <div class="skill-tags">
+                  <button class="skill-pill" data-skill="flutter">Flutter / Dart</button>
+                  <button class="skill-pill" data-skill="figma">Figma & UI</button>
+                  <button class="skill-pill" data-skill="adobe">Adobe Suite</button>
+                  <button class="skill-pill" data-skill="devops">Git & Docker</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-spotlight-wrapper reveal">
+              <article class="skill-spotlight" id="skillSpotlight" aria-live="polite">
+                <div>
+                  <div class="skill-spotlight-head">
+                    <div>
+                      <div class="mono" style="margin-bottom: 8px;">Selected Discipline</div>
+                      <h3 class="title-md" id="skillTitle" style="font-family: var(--font-display); font-style:italic;">C#</h3>
+                    </div>
+                    <div class="chip" id="skillLabel">Backend & Architecture</div>
+                  </div>
+
+                  <div style="margin-top: 24px;">
+                    <p class="small" id="skillDescription">I utilize C# to build out robust, strongly typed application logic and backend services, ensuring scale and maintainability.</p>
+                    <div class="skill-meter" aria-label="Skill confidence level"><span id="skillMeter"></span></div>
+                    <ul class="bullet-list" id="skillBullets"></ul>
+                  </div>
+                </div>
+                <div class="chip-row" id="skillTools" style="margin-top:24px;"></div>
+              </article>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="projects" id="projects">
+        <div class="section">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-folder-open"></i> Work</div>
+              <h2 class="title-lg">Selected deployments.</h2>
+            </div>
+            <p class="lead">A collection of web interfaces, internal tools, and strategic brand solutions.</p>
+          </div>
+
+          <div class="project-toolbar reveal" id="projectFilters">
+            <button class="btn btn-ghost active" data-filter="all">Everything</button>
+            <button class="btn btn-ghost" data-filter="web">Web Interfaces</button>
+            <button class="btn btn-ghost" data-filter="automation">Automations</button>
+            <button class="btn btn-ghost" data-filter="repos">Repositories</button>
+          </div>
+
+          <div class="project-grid" id="projectGrid">
+            
+            <article class="project-card reveal" data-category="web">
+              <div class="project-visual">
+                <i class="ph-light ph-sparkle"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">E-Commerce</span>
+                <span class="project-tag">UI / UX</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Biseka Cosmetics</h3>
+              <p class="small">Engineered the digital storefront. Focused on high-performance load times, a natural aesthetic, and a premium user journey to elevate online conversions.</p>
+              <div class="project-links">
+                <a href="https://biseka.co/" target="_blank" class="text-link">Live Site <i class="ph-light ph-arrow-up-right"></i></a>
+                <button class="text-link" data-open-project="biseka">Details</button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="web" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-buildings"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Brand Site</span>
+                <span class="project-tag">Frontend</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Scrub and Butter</h3>
+              <p class="small">Developed the complete technical web presence and brand identity architecture, prioritizing clean layout and credibility.</p>
+              <div class="project-links">
+                <a href="https://scrubnbutter.com/" target="_blank" class="text-link">Live Site <i class="ph-light ph-arrow-up-right"></i></a>
+                <button class="text-link" data-open-project="scrub">Details</button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="web">
+              <div class="project-visual">
+                <i class="ph-light ph-waves"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Lifestyle</span>
+                <span class="project-tag">Frontend</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">MOB Surfskate</h3>
+              <p class="small">A dynamic web experience for a surfskate brand, focusing on high-quality visuals, motion, and a modern aesthetic.</p>
+              <div class="project-links">
+                <a href="https://mobsurfskate.com/" target="_blank" class="text-link">Live Site <i class="ph-light ph-arrow-up-right"></i></a>
+                <button class="text-link" data-open-project="mob">Details</button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="web" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-storefront"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Hospitality</span>
+                <span class="project-tag">Responsive Design</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">OLA Tangalle Hotel</h3>
+              <p class="small">Collaborated closely to engineer a premium frontend experience for a boutique hotel, highlighting imagery and booking flows.</p>
+              <div class="project-links">
+                <a href="https://olatangalle.com/" target="_blank" class="text-link">Live Site <i class="ph-light ph-arrow-up-right"></i></a>
+                <button class="text-link" data-open-project="ola">Details</button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="web">
+              <div class="project-visual">
+                <i class="ph-light ph-drop"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">E-Commerce</span>
+                <span class="project-tag">Brand Presence</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Exact Extract & LoveandLab</h3>
+              <p class="small">Web solutions for a perfume brand and a cosmetic brand, emphasizing product presentation and seamless WooCommerce integration.</p>
+              <div class="project-links">
+                 <a href="https://exactextract.lk/" target="_blank" class="text-link">Extract <i class="ph-light ph-arrow-up-right"></i></a>
+                 <a href="https://loveandlab.com/" target="_blank" class="text-link">LoveandLab <i class="ph-light ph-arrow-up-right"></i></a>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="automation" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-kanban"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Google Apps Script</span>
+                <span class="project-tag">Logic Systems</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Biseka Bulk Invoice Automation</h3>
+              <p class="small">Automated framework centralizing monthly data to instantly generate error-free tax invoices for Biseka Maldives, calculating discounts and sales tax dynamically.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="invoice">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="automation">
+              <div class="project-visual">
+                <i class="ph-light ph-paper-plane-right"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Payroll</span>
+                <span class="project-tag">Email Delivery</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Pay slip & Email Delivery Automation</h3>
+              <p class="small">An integrated system that tracks complex salary components for 30+ employees, generates individual PDF payslips, and automates email delivery to staff.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="payroll">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="automation" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-device-mobile"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">API Integration</span>
+                <span class="project-tag">Logistics</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Logistics SMS Notification Framework</h3>
+              <p class="small">A centralized command center that pairs tracking numbers with automated SMS notifications for customers, managing multiple courier agents and logging API responses.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="sms">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="automation">
+              <div class="project-visual">
+                <i class="ph-light ph-copy"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Data Architecture</span>
+                <span class="project-tag">Workspace</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Automated Monthly Sheet Generation</h3>
+              <p class="small">A centralized controller that dynamically generates, renames, and organizes specialized tracking sheets for different locations and roles across the organization.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="sheets">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="repos" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-github-logo"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Code Repos</span>
+                <span class="project-tag">JS / HTML / CSS</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Development Archives</h3>
+              <p class="small">A collection of technical prototypes including a Customer Care Asset Form, a responsive Travel Site, a Movie Database layout, and interactive JS games.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="repos">View Repositories <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="experience" id="experience">
+        <div class="section">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-hourglass"></i> History</div>
+              <h2 class="title-lg">Timeline of growth.</h2>
+            </div>
+            <p class="lead">Tracing the path between academic foundations and applied professional experience.</p>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-column reveal">
+              <h3 class="title-sm" style="margin-bottom: 12px; font-family:var(--font-mono); text-transform:uppercase; color:var(--muted)">Professional Focus</h3>
+              
+              <article class="timeline-card">
+                <div class="eyebrow">July 2024 — Present <span class="status">• Active</span></div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">Assistant IT Administrator</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 16px;">CER Group of Companies</p>
+                <p class="small" style="margin-bottom: 12px; font-style:italic;">(Biseka, Love&Lab, Scrub&Butter, ExactExtract, OlaTangalle, MobSurfskate)</p>
+                <ul class="timeline-list">
+                  <li><i class="ph-light ph-check-circle"></i> Manage IT systems, databases, and automation tools across all brands.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Develop and improve automation scripts using Google Apps Script.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Handle website updates, pricing, promotions, and WooCommerce logic.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Manage Google Ads, Merchant Center, and Meta Business Suite integrations.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Build operational dashboards in Looker Studio for KPI tracking.</li>
+                </ul>
+              </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">2025 — Present <span class="status">• Active</span></div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">System Automation & Web Developer</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 16px;">CodeNest Team</p>
+                <ul class="timeline-list">
+                  <li><i class="ph-light ph-check-circle"></i> Serve as the technical lead for web development, system automation, and QA testing.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Build automated workflows and data-driven insights to help client businesses scale efficiently.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Collaborate with a multidisciplinary team focusing on brand structure, digital systems, and marketing architecture.</li>
+                </ul>
+              </article>
+              
+               <div style="margin-top: 12px; padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface-3);">
+                    <p class="small" style="font-style: italic; color: var(--muted-2);">I do hereby declare that all statements made in this application are true and correct to the best of my knowledge.</p>
+                </div>
+
+            </div>
+
+            <div class="timeline-column reveal" style="transition-delay: 100ms;">
+               <h3 class="title-sm" style="margin-bottom: 12px; font-family:var(--font-mono); text-transform:uppercase; color:var(--muted)">Academic Roots</h3>
+               
+              <article class="timeline-card">
+                <div class="eyebrow">2024 — 2028</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">Bachelor of Information Technology</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">University of Colombo</p>
+                <p class="small">Rigorous study of software engineering principles, database architecture, and computer science fundamentals.</p>
+              </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">2025 — 2027</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">HND in Computer Science</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">Londontech City Campus</p>
+                <p class="small">Practical Higher National Diploma reinforcing hands-on coding paradigms and logic application.</p>
+              </article>
+
+              <article class="timeline-card" style="padding-bottom: 32px;">
+                <div class="eyebrow">Prior Education</div>
+                <h3 class="title-sm" style="margin-bottom: 16px;">Foundational Studies</h3>
+                
+                <div class="foundation-grid">
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-code" style="color:var(--primary); font-size:1.2rem;"></i> University of Moratuwa</h4>
+                        <p>Programming in Python & Web Development.</p>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-brain" style="color:var(--primary); font-size:1.2rem;"></i> JAVA Institute</h4>
+                        <p>Foundation in Neuroscience, Programming, and Robotic Science.</p>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-exam" style="color:var(--primary); font-size:1.2rem;"></i> G.C.E. Advanced Level (2023)</h4>
+                        <p style="margin-bottom:6px;">D.S. Senanayake College, Beruwela. <br> Engineering Technology Stream.</p>
+                        <span class="chip" style="font-family: var(--font-mono); font-size:0.75rem; min-height:28px; padding:0 8px;">Results: C1, S2</span>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-certificate" style="color:var(--primary); font-size:1.2rem;"></i> G.C.E. Ordinary Level (2019)</h4>
+                        <p style="margin-bottom:6px;">Tissa Central College, Kalutara.</p>
+                        <span class="chip" style="font-family: var(--font-mono); font-size:0.75rem; min-height:28px; padding:0 8px;">Results: A4, B1, C4</span>
+                    </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="contact" id="contact">
+        <div class="section">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-tag mono"><i class="ph-light ph-paper-plane-tilt"></i> Contact</div>
+              <h2 class="title-lg">Let's cultivate ideas together.</h2>
+            </div>
+            <p class="lead">Whether you need a custom business automation system, a refined web overhaul, or are looking for a dedicated developer, my inbox is open.</p>
+          </div>
+
+          <div class="contact-layout">
+            <article class="card card-pad reveal">
+              <div class="mono" style="margin-bottom: 16px;"><i class="ph-light ph-link"></i> Direct Channels</div>
+              <h3 class="title-md" style="margin-bottom: 24px;">Start a conversation.</h3>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <div style="display:flex; align-items:center; gap: 16px;">
+                    <i class="ph-light ph-envelope-simple main-icon"></i>
+                    <div>
+                      <div class="small" style="margin-bottom: 4px;">Email</div>
+                      <strong id="emailText">nikithakeshan@gmail.com</strong>
+                    </div>
+                  </div>
+                  <button class="btn btn-secondary" id="copyEmailBtn" type="button" style="min-height:36px; padding:0 16px;">Copy</button>
+                </div>
+                
+                <div class="contact-item">
+                  <div style="display:flex; align-items:center; gap: 16px;">
+                    <i class="ph-light ph-phone main-icon"></i>
+                    <div>
+                      <div class="small" style="margin-bottom: 4px;">Phone</div>
+                      <strong>+94 764849127</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contact-item" style="flex-direction:column; align-items:flex-start; gap: 20px;">
+                  <div class="small">Digital Footprint</div>
+                  <div class="social-grid">
+                    <a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" class="social-btn"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
+                    <a href="https://github.com/nikithaKesh" target="_blank" class="social-btn"><i class="ph-fill ph-github-logo"></i> GitHub</a>
+                    <a href="https://x.com/_zo_no_" target="_blank" class="social-btn"><i class="ph-fill ph-twitter-logo"></i> X (Twitter)</a>
+                    <a href="https://www.instagram.com/z.onoo/" target="_blank" class="social-btn"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
+                    <a href="https://www.facebook.com/nikitha.keshan.7?mibextid=ZbWKwL" target="_blank" class="social-btn" style="grid-column: span 2;"><i class="ph-fill ph-facebook-logo"></i> Facebook</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card card-pad reveal" style="transition-delay: 100ms;">
+              <form class="contact-form" id="contactForm" novalidate>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input class="input" id="name" name="name" type="text" placeholder="Jane Doe" required />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input class="input" id="email" name="email" type="email" placeholder="jane@example.com" required />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="subject">Subject</label>
+                  <input class="input" id="subject" name="subject" type="text" placeholder="Project Inquiry" required />
+                </div>
+
+                <div class="field">
+                  <label for="message">Message</label>
+                  <textarea class="textarea" id="message" name="message" placeholder="How can I help you grow your business?" required></textarea>
+                </div>
+
+                <div style="margin-top: 12px;">
+                  <button class="btn btn-primary" type="submit" style="width:100%;">Send Message</button>
+                </div>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bar reveal">
+        <p class="small">© 2026 Nikitha Keshan — Crafted with purpose. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#home" class="text-link" data-route-link="home">Overview</a>
+          <a href="#projects" class="text-link" data-route-link="projects">Work</a>
+          <a href="#contact" class="text-link" data-route-link="contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="backdrop" id="modalBackdrop"></div>
+  <div class="modal" id="projectModal" aria-hidden="true" aria-labelledby="modalTitle" role="dialog">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <div class="mono" style="margin-bottom: 8px;">Project Blueprint</div>
+          <h3 class="title-md" id="modalTitle" style="font-family: var(--font-display); font-style:italic;">Project Title</h3>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Close project details"><i class="ph-light ph-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="small" id="modalDescription" style="margin-bottom: 24px; font-size: 1.05rem;"></p>
+        <div class="chip-row" id="modalTags" style="margin-bottom: 24px;"></div>
+        <ul class="bullet-list" id="modalBullets"></ul>
+      </div>
+      <div class="modal-foot">
+        <span class="small" id="modalLinkSpace">Live deployment link</span>
+        <button class="btn btn-secondary" id="modalDone">Close Window</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const pages = [...document.querySelectorAll('.page')];
+    const routeLinks = [...document.querySelectorAll('[data-route-link]')];
+    const navShell = document.getElementById('navShell');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const toast = document.getElementById('toast');
+    
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    const savedTheme = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    
+    if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeIcon.className = 'ph-light ph-moon';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.className = 'ph-light ph-sun';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeIcon.className = 'ph-light ph-moon';
+      }
+    });
+
+    const skillData = {
+      csharp: {
+        title: 'C# / .NET', label: 'Backend & Architecture', level: 85,
+        description: 'I utilize C# to build out robust, strongly typed application logic and backend services, ensuring scale and maintainability across the .NET ecosystem.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> System-minded programming for enterprise logic.',
+          '<i class="ph-light ph-check"></i> Deepens understanding of OOP and architecture patterns.',
+          '<i class="ph-light ph-check"></i> Broadens practical development beyond the frontend.'
+        ],
+        tools: ['.NET Core', 'Blazor', 'MVC', 'OOP']
+      },
+      python: {
+        title: 'Python', label: 'Backend & Automation', level: 88,
+        description: 'I use Python for rapid backend logic, utility tools, data pipelines, and practical workflows where manual work needs to be replaced by reliable scripts.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Rapid development with Django and utility scripts.',
+          '<i class="ph-light ph-check"></i> Strong fit for business problem-solving and automation.',
+          '<i class="ph-light ph-check"></i> Supports the technical foundation of my machine learning knowledge.'
+        ],
+        tools: ['Django', 'MVT', 'Data Pipelines', 'AI / ML']
+      },
+      java: {
+        title: 'Java', label: 'OOP Foundations', level: 75,
+        description: 'Java forms a solid root system for my application architecture, helping me think in a highly structured, object-oriented way.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Ideal for learning enterprise-style programming.',
+          '<i class="ph-light ph-check"></i> Builds immense discipline around typed logic.',
+          '<i class="ph-light ph-check"></i> Deepens core computer science foundations.'
+        ],
+        tools: ['Java', 'Enterprise Structure', 'OOP']
+      },
+      javascript: {
+        title: 'JavaScript', label: 'Interaction Logic', level: 88,
+        description: 'JavaScript breathes life into static interfaces, handling routing, dynamic UI state, and seamless, fluid user interactions.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Makes pages feel like real, tactile products.',
+          '<i class="ph-light ph-check"></i> Client-side logic execution and DOM manipulation.',
+          '<i class="ph-light ph-check"></i> Essential for rich, modern frontend experiences.'
+        ],
+        tools: ['DOM', 'ES6+', 'Async Logic', 'State Management']
+      },
+      typescript: {
+        title: 'TypeScript', label: 'Typed Frontend', level: 82,
+        description: 'TypeScript adds safety and strict structural integrity to JavaScript, ensuring scalable and highly maintainable application architectures.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Prevents logic errors before code even runs.',
+          '<i class="ph-light ph-check"></i> Makes scaling large codebases manageable.',
+          '<i class="ph-light ph-check"></i> Perfect companion for modern React & Next.js ecosystems.'
+        ],
+        tools: ['Types', 'Interfaces', 'Scalability']
+      },
+      c: {
+        title: 'C / C++', label: 'Core Foundations', level: 65,
+        description: 'Working with C deepens my understanding of memory management, performance optimization, and lower-level system mechanics.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Sharpens logic and core programming fundamentals.',
+          '<i class="ph-light ph-check"></i> Useful for academic and foundational software learning.',
+          '<i class="ph-light ph-check"></i> Strengthens technical depth beyond the web layer.'
+        ],
+        tools: ['Memory', 'Logic', 'Performance']
+      },
+      react: {
+        title: 'React & Next.js', label: 'Dynamic Interfaces', level: 85,
+        description: 'I build component-driven, highly interactive web applications using React and Next.js, focusing on state management and performance.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Creating modular, reusable UI components.',
+          '<i class="ph-light ph-check"></i> Managing complex application state efficiently.',
+          '<i class="ph-light ph-check"></i> Leveraging Next.js for SSR and optimal performance.'
+        ],
+        tools: ['React.js', 'Next.js', 'Redux', 'Components']
+      },
+      blazor: {
+        title: 'Blazor & XAML', label: '.NET UI', level: 80,
+        description: 'I leverage the C# ecosystem to build seamless, unified web and application interfaces using Blazor and XAML.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Building rich interactive UIs using C# instead of JS.',
+          '<i class="ph-light ph-check"></i> Deep integration with existing .NET backend services.',
+          '<i class="ph-light ph-check"></i> Cross-platform interface design.'
+        ],
+        tools: ['Blazor', 'XAML', 'MAUI', '.NET UI']
+      },
+      htmlcss: {
+        title: 'HTML5 & CSS3', label: 'Visual Architecture', level: 92,
+        description: 'The absolute bedrock of my work. I write semantic HTML for accessibility, and modern CSS to shape the exact visual atmosphere of a product.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Clean, accessible, and scalable content structure.',
+          '<i class="ph-light ph-check"></i> Modern frosted glass, organic spacing, and transitions.',
+          '<i class="ph-light ph-check"></i> Framework-independent responsive design.'
+        ],
+        tools: ['Semantics', 'CSS Grid', 'Flexbox', 'Animations']
+      },
+      tailwind: {
+        title: 'Tailwind CSS & UI', label: 'Rapid Styling', level: 90,
+        description: 'I use utility-first CSS frameworks like Tailwind alongside Material UI to rapidly prototype and consistently scale visual design systems.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Accelerates development without losing design fidelity.',
+          '<i class="ph-light ph-check"></i> Ensures absolute consistency across large component libraries.',
+          '<i class="ph-light ph-check"></i> Easy maintenance and responsive scaling.'
+        ],
+        tools: ['Tailwind CSS', 'Material UI', 'Design Systems']
+      },
+      dotnet: {
+        title: '.NET Core & Node', label: 'Backend Systems', level: 82,
+        description: 'Crafting robust, scalable enterprise backends, microservices, and fast event-driven APIs.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Building secure, high-performance REST APIs.',
+          '<i class="ph-light ph-check"></i> Implementing microservices architecture.',
+          '<i class="ph-light ph-check"></i> Handling complex business logic securely on the server.'
+        ],
+        tools: ['.NET Core', 'Node.js', 'Microservices', 'REST APIs']
+      },
+      nodejs: {
+        title: 'Node.js', label: 'Async Backend', level: 82,
+        description: 'Crafting fast, event-driven APIs and scalable server-side applications utilizing the JavaScript ecosystem.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Perfect for real-time applications and scalable network programs.',
+          '<i class="ph-light ph-check"></i> Unifies the codebase by using JS on both client and server.',
+          '<i class="ph-light ph-check"></i> Extensive integration with modern cloud platforms.'
+        ],
+        tools: ['Node.js', 'Express', 'Async Logic', 'APIs']
+      },
+      django: {
+        title: 'Django / PHP', label: 'Rapid Backend', level: 75,
+        description: 'Utilizing robust frameworks like Django alongside legacy PHP to build secure, data-driven web applications quickly.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> High-level Python frameworks that encourage clean design.',
+          '<i class="ph-light ph-check"></i> Excellent for rapid prototyping and moving ideas to production.',
+          '<i class="ph-light ph-check"></i> Built-in security and administration panels.'
+        ],
+        tools: ['Django', 'PHP', 'MVT Architecture']
+      },
+      sql: {
+        title: 'SQL / MySQL', label: 'Relational Data', level: 84,
+        description: 'The soil of any good application. I use SQL Server and MySQL for structured data storage, querying, and relational integrity.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Designing efficient relational database schemas.',
+          '<i class="ph-light ph-check"></i> Writing complex queries for reporting and dashboards.',
+          '<i class="ph-light ph-check"></i> Critical for organized, transactional business data.'
+        ],
+        tools: ['SQL Server', 'MySQL', 'Relational DBs']
+      },
+      nosql: {
+        title: 'PostgreSQL / Mongo', label: 'Advanced Data', level: 80,
+        description: 'Handling advanced relational integrity with PostgreSQL, and unstructured flexibility with NoSQL databases like MongoDB and Firebase.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Adapting database choices to the specific needs of the product.',
+          '<i class="ph-light ph-check"></i> Handling highly scalable, document-oriented data.',
+          '<i class="ph-light ph-check"></i> Real-time data syncing capabilities.'
+        ],
+        tools: ['PostgreSQL', 'MongoDB', 'Firebase']
+      },
+      flutter: {
+        title: 'Flutter / Dart', label: 'Mobile Development', level: 78,
+        description: 'Creating fluid, natively compiled mobile applications for both iOS and Android from a single, highly maintainable codebase.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Rapid cross-platform development.',
+          '<i class="ph-light ph-check"></i> Building beautiful, customized mobile UI components.',
+          '<i class="ph-light ph-check"></i> Connects seamlessly to REST APIs and Firebase.'
+        ],
+        tools: ['Flutter', 'Dart', 'Android', 'MAUI']
+      },
+      figma: {
+        title: 'Figma & UI', label: 'Prototyping', level: 85,
+        description: 'Translating user needs and business goals into high-fidelity wireframes, visual systems, and interactive prototypes.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Designing exact component libraries before writing code.',
+          '<i class="ph-light ph-check"></i> Ensuring visual harmony, typography, and spacing.',
+          '<i class="ph-light ph-check"></i> Seamless collaboration with clients during the design phase.'
+        ],
+        tools: ['Figma', 'Adobe XD', 'Prototyping', 'Wireframing']
+      },
+      adobe: {
+        title: 'Adobe Creative Suite', label: 'Visual Assets', level: 80,
+        description: 'Utilizing professional design software to generate pixel-perfect assets, edit multimedia, and polish brand identities.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Photo manipulation and asset creation.',
+          '<i class="ph-light ph-check"></i> Vector graphic illustration.',
+          '<i class="ph-light ph-check"></i> Video editing and motion graphics integration.'
+        ],
+        tools: ['Photoshop', 'Illustrator', 'Premiere Pro', 'After Effects']
+      },
+      devops: {
+        title: 'Git & Docker', label: 'Operations', level: 80,
+        description: 'Maintaining version control integrity, agile project momentum, and containerizing applications for seamless deployment.',
+        bullets: [
+          '<i class="ph-light ph-check"></i> Ensuring consistent environments from dev to production.',
+          '<i class="ph-light ph-check"></i> Managing codebases via GitHub and GitLab.',
+          '<i class="ph-light ph-check"></i> Facilitating Scrum and Agile workflows via Jira and Slack.'
+        ],
+        tools: ['Docker', 'Git', 'Agile / Scrum', 'Postman']
+      }
+    };
+
+    const projectData = {
+      biseka: {
+        title: 'Biseka Cosmetics Web Platform',
+        description: 'A cosmetics-focused brand website cultivated for cleaner presentation, stronger structure, and high-end storefront credibility.',
+        tags: ['Web Development', 'UI / UX', 'Brand Presence'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Built to feel inherently premium and natural.',
+          '<i class="ph-light ph-check"></i> Focused on product presentation and navigation clarity.',
+          '<i class="ph-light ph-check"></i> Combines aesthetic taste with practical business intent.'
+        ],
+        url: 'https://biseka.co/'
+      },
+      scrub: {
+        title: 'Scrub and Butter',
+        description: 'A complete technical web presence and brand identity architecture, prioritizing clean layout and credibility.',
+        tags: ['Brand Site', 'Direction', 'Frontend'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Communicates modern capability and premium positioning.',
+          '<i class="ph-light ph-check"></i> Proof of design and service architecture thinking.',
+          '<i class="ph-light ph-check"></i> Built for high conversion and lead generation.'
+        ],
+        url: 'https://scrubnbutter.com/'
+      },
+      mob: {
+        title: 'MOB Surfskate',
+        description: 'A dynamic web experience for a surfskate brand, focusing on high-quality visuals, motion, and a modern aesthetic.',
+        tags: ['Lifestyle Brand', 'WooCommerce', 'WordPress'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> High-quality visual integration and motion.',
+          '<i class="ph-light ph-check"></i> Seamless e-commerce flow for lifestyle products.',
+          '<i class="ph-light ph-check"></i> Prioritizes mobile responsiveness for on-the-go users.'
+        ],
+        url: 'https://mobsurfskate.com/'
+      },
+      ola: {
+        title: 'OLA Tangalle Hotel',
+        description: 'A premium hospitality frontend experience highlighting imagery and booking flows.',
+        tags: ['Hospitality', 'WordPress', 'Codenest'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Clean, immersive design highlighting property visuals.',
+          '<i class="ph-light ph-check"></i> Intuitive user journey driving booking conversions.',
+          '<i class="ph-light ph-check"></i> High-fidelity translation from design files to code.'
+        ],
+        url: 'https://olatangalle.com/'
+      },
+      invoice: {
+        title: 'Biseka Bulk Invoice Automation',
+        description: 'Automated framework centralizing monthly data to instantly generate error-free tax invoices for Biseka Maldives.',
+        tags: ['Google Sheets', 'Apps Script', 'Financial Logic'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> <strong>Dynamic Templates:</strong> Sheets auto-populate based on selected data (Customer Name, QTY, Rate).',
+          '<i class="ph-light ph-check"></i> <strong>Automated Calculations:</strong> Hard-coded formulas for line totals, 20% discounts, and 8% GST.',
+          '<i class="ph-light ph-check"></i> <strong>Archive Management:</strong> Links separate Sheet IDs for every month to ensure structured, accessible records.'
+        ],
+        url: null
+      },
+      payroll: {
+        title: 'Payslip & Email Delivery Automation',
+        description: 'An integrated payroll system that calculates complex salary variables, generates PDFs, and automates email distribution.',
+        tags: ['HR Automation', 'PDF Generation', 'Email API'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> <strong>Centralized Database:</strong> Tracks over 30 employees, managing basic pay, allowances, and EPF deductions.',
+          '<i class="ph-light ph-check"></i> <strong>Automated Delivery:</strong> Creates individual PDF payslips and emails them directly to the staff member.',
+          '<i class="ph-light ph-check"></i> <strong>Error Handling:</strong> Logs PDF creation times and identifies delivery failures (e.g., missing emails).'
+        ],
+        url: null
+      },
+      sms: {
+        title: 'Logistics SMS Notification Framework',
+        description: 'A centralized command center bridging courier data (Citypack, Fardar) with automated customer SMS communication.',
+        tags: ['API Integration', 'Logistics', 'Status Logging'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> <strong>Dynamic Content:</strong> Pairs courier tracking numbers with respective URLs automatically.',
+          '<i class="ph-light ph-check"></i> <strong>Real-Time Logging:</strong> Captures timestamps and API status codes (e.g., "submit success", "insufficient credits").',
+          '<i class="ph-light ph-check"></i> <strong>Multi-Agent Support:</strong> Manages unique messaging requirements tailored to different delivery agents.'
+        ],
+        url: null
+      },
+      sheets: {
+        title: 'Automated Monthly Sheet Generation',
+        description: 'A centralized controller automating the deployment, renaming, and organization of specialized tracking sheets across BISEKA locations.',
+        tags: ['Workspace', 'Architecture', 'Bulk Execution'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> <strong>Template-Based:</strong> Pulls from master templates to ensure strict formatting and structural integrity.',
+          '<i class="ph-light ph-check"></i> <strong>Dynamic Routing:</strong> Automatically renames files by month/brand and places them in specific Destination Folder IDs.',
+          '<i class="ph-light ph-check"></i> <strong>Rapid Deployment:</strong> Deploys complete suites of business trackers (SHOP logs, BIS logs) in minutes.'
+        ],
+        url: null
+      },
+      repos: {
+        title: 'Development Archives & Repositories',
+        description: 'A collection of my technical prototypes, HTML/JS builds, and concept layouts hosted via GitHub Pages.',
+        tags: ['Code Repos', 'JS', 'HTML/CSS', 'GitHub'],
+        bullets: [
+          '<i class="ph-light ph-arrow-circle-right"></i> <a href="https://nikithakesh.github.io/Employee-Assets/" target="_blank" style="color:var(--text); text-decoration:underline;">Customer Care Employee Asset Form</a>',
+          '<i class="ph-light ph-arrow-circle-right"></i> <a href="https://nikithakesh.github.io/Travel-site/#" target="_blank" style="color:var(--text); text-decoration:underline;">Simple One-Page Travel Site</a>',
+          '<i class="ph-light ph-arrow-circle-right"></i> <a href="https://nikithakesh.github.io/movie/" target="_blank" style="color:var(--text); text-decoration:underline;">Movie Database Concept</a>',
+          '<i class="ph-light ph-arrow-circle-right"></i> <a href="https://nikithakesh.github.io/snake-game/" target="_blank" style="color:var(--text); text-decoration:underline;">Interactive JS Snake Game</a>',
+          '<i class="ph-light ph-arrow-circle-right"></i> <a href="https://nikithakesh.github.io/growing-flower/" target="_blank" style="color:var(--text); text-decoration:underline;">Neon CSS Animation Concept</a>'
+        ],
+        url: 'https://github.com/nikithaKesh'
+      }
+    };
+
+    function showToast(message) {
+      toast.innerHTML = `<i class="ph-fill ph-info" style="margin-right:8px; color:var(--primary)"></i> ${message}`;
+      toast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function closeMobileMenu() {
+      mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden', 'true');
+      mobileToggle.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('open');
+      mobilePanel.setAttribute('aria-hidden', String(!isOpen));
+      mobileToggle.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // --- Replaced hash routing with scroll spy (IntersectionObserver) ---
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          routeLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.routeLink === id);
+          });
+        }
+      });
+    }, { threshold: 0.2, rootMargin: "-10% 0px -50% 0px" });
+
+    pages.forEach(page => sectionObserver.observe(page));
+
+    document.addEventListener('click', (e) => {
+      const route = e.target.closest('[data-route-link]');
+      const proj = e.target.closest('[data-open-project]');
+
+      // If clicking a nav link, let the browser smoothly scroll via CSS, just close the menu.
+      if (route && route.getAttribute('href')?.startsWith('#')) {
+        closeMobileMenu();
+      }
+      if (!mobilePanel.contains(e.target) && !mobileToggle.contains(e.target) && mobilePanel.classList.contains('open')) closeMobileMenu();
+      if (proj) openProjectModal(proj.dataset.openProject);
+    });
+
+    window.addEventListener('scroll', () => navShell.classList.toggle('scrolled', window.scrollY > 10));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const skillPills = [...document.querySelectorAll('.skill-pill')];
+    function renderSkill(key) {
+      const data = skillData[key];
+      if (!data) return;
+      skillPills.forEach(p => p.classList.toggle('active', p.dataset.skill === key));
+      document.getElementById('skillTitle').textContent = data.title;
+      document.getElementById('skillLabel').textContent = data.label;
+      document.getElementById('skillDescription').textContent = data.description;
+      document.getElementById('skillBullets').innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
+      document.getElementById('skillTools').innerHTML = data.tools.map(t => `<span class="chip">${t}</span>`).join('');
+      setTimeout(() => document.getElementById('skillMeter').style.width = `${data.level}%`, 50);
+    }
+    skillPills.forEach(p => p.addEventListener('click', () => renderSkill(p.dataset.skill)));
+    renderSkill('csharp'); 
+
+    const filters = [...document.querySelectorAll('#projectFilters [data-filter]')];
+    const cards = [...document.querySelectorAll('#projectGrid .project-card')];
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(b => b.classList.remove('active')); btn.classList.add('active');
+        cards.forEach(card => card.style.display = (btn.dataset.filter === 'all' || card.dataset.category.includes(btn.dataset.filter)) ? '' : 'none');
+      });
+    });
+
+    function openProjectModal(key) {
+      const data = projectData[key]; if (!data) return;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalDescription').textContent = data.description;
+      document.getElementById('modalTags').innerHTML = data.tags.map(t => `<span class="chip">${t}</span>`).join('');
+      document.getElementById('modalBullets').innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
+      
+      const linkSpace = document.getElementById('modalLinkSpace');
+      if(data.url) {
+        linkSpace.innerHTML = `<a href="${data.url}" target="_blank" class="text-link" style="font-size: 1rem;">View Live Project <i class="ph-light ph-arrow-up-right"></i></a>`;
+      } else {
+        linkSpace.innerHTML = `Internal/Backend System Tool`;
+      }
+
+      document.getElementById('modalBackdrop').classList.add('show');
+      document.getElementById('projectModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProjectModal() {
+      document.getElementById('modalBackdrop').classList.remove('show');
+      document.getElementById('projectModal').classList.remove('show');
+      document.body.style.overflow = mobilePanel.classList.contains('open') ? 'hidden' : '';
+    }
+    [document.getElementById('modalBackdrop'), document.getElementById('modalClose'), document.getElementById('modalDone')].forEach(el => el.addEventListener('click', closeProjectModal));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeProjectModal(); closeMobileMenu(); }});
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fields = ['name', 'email', 'subject', 'message'].map(id => e.target[id].value.trim());
+      if (fields.some(f => !f)) return showToast('Please complete all fields.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields[1])) return showToast('Enter a valid email.');
+      showToast('Form validated. Ready for backend connection.');
+      e.target.reset();
+    });
+
+    document.getElementById('copyEmailBtn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(document.getElementById('emailText').textContent.trim()); showToast('Email copied to clipboard.'); } 
+      catch { showToast('Copy failed.'); }
+    });
+
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.body.style.cursor = 'none';
+      const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
+      window.addEventListener('mousemove', e => {
+        dot.style.opacity = '1'; ring.style.opacity = '1';
+        dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        ring.animate({ transform: `translate(${e.clientX}px, ${e.clientY}px)` }, { duration: 150, fill: 'forwards' });
+      });
+      document.querySelectorAll('a, button, input, textarea, .project-card, .skill-pill, .social-btn, .theme-toggle').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('active'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('active'));
+      });
+    }
+  </script>
+</body>
+</html>
