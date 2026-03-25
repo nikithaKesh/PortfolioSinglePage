@@ -363,6 +363,9 @@
     /* =========================================
        PROJECTS
        ========================================= */
+    .project-toolbar { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+    .project-toolbar .btn-ghost { border: 1px solid var(--line); }
+
     .project-card {
       padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
       transition: var(--transition); display: flex; flex-direction: column; cursor: pointer;
@@ -372,7 +375,7 @@
     .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
     .project-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--surface-3); display: grid; place-items: center; font-size: 1.5rem; color: var(--primary-2); border: 1px solid var(--line); }
     
-    .project-tags { display: flex; gap: 8px; margin-top: auto; padding-top: 32px; }
+    .project-tags { display: flex; gap: 8px; margin-top: auto; padding-top: 32px; flex-wrap: wrap;}
 
     /* =========================================
        EXPERIENCE TIMELINE
@@ -434,7 +437,7 @@
     .case-section h4 { font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary-2); text-transform: uppercase; margin-bottom: 12px; }
     .case-section p { font-size: 1rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
-    .modal-footer { padding: 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .modal-footer { padding: 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;}
 
     /* Toast */
     .toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface-2); border: 1px solid var(--primary); padding: 16px 24px; border-radius: var(--radius-sm); z-index: 2000; transform: translateY(20px); opacity: 0; visibility: hidden; transition: var(--transition); }
@@ -640,6 +643,13 @@
           <h2 class="title-lg">Selected proof of work.</h2>
         </div>
 
+        <div class="project-toolbar reveal" id="projectFilters">
+          <button class="btn btn-ghost active" data-filter="all">All Deployments</button>
+          <button class="btn btn-ghost" data-filter="web">Web Interfaces</button>
+          <button class="btn btn-ghost" data-filter="automation">Automations</button>
+          <button class="btn btn-ghost" data-filter="repos">Repositories</button>
+        </div>
+
         <div class="grid-2" id="projectGrid">
           </div>
       </div>
@@ -787,10 +797,12 @@
     </div>
     
     <div class="modal-footer">
-      <div id="modalLinks"></div>
+      <div id="modalLinks" style="display:flex; flex-wrap:wrap; gap:12px;"></div>
       <button class="btn btn-secondary" id="modalCloseBtn">Close</button>
     </div>
   </div>
+
+  <div class="toast" id="toast"></div>
 
   <script>
     // --- Theme Logic ---
@@ -860,74 +872,188 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // --- Project Data & Modal Logic ---
+    // --- Project Data & Modal Logic (ALL 10 PROJECTS) ---
     const projects = [
       {
         id: 'biseka',
+        category: 'web',
         title: 'Biseka Cosmetics Web Platform',
         icon: 'ph-sparkle',
-        summary: 'A premium cosmetics storefront optimized for high conversions.',
+        summary: 'Engineered digital storefront focusing on high-performance and a premium user journey.',
         role: 'Frontend Developer',
         tags: ['E-Commerce', 'UI/UX', 'Performance'],
-        problem: 'The brand needed a digital storefront that reflected its premium aesthetic, but large high-resolution product images were causing severe load delays, resulting in cart abandonment.',
-        solution: 'Engineered a highly optimized, component-driven UI. Implemented lazy loading for images, streamlined the WooCommerce integration, and designed a frictionless checkout journey.',
-        impact: 'Achieved a significantly faster page load time, elevating the brand\'s credibility and directly increasing online sales conversions.',
-        url: 'https://biseka.co/'
-      },
-      {
-        id: 'payroll',
-        title: 'Payslip & Email Automation',
-        icon: 'ph-paper-plane-right',
-        summary: 'Automated HR system for salary calculation and PDF delivery.',
-        role: 'System Automation Creator',
-        tags: ['Python / Apps Script', 'HR', 'API'],
-        problem: 'The HR department was manually calculating complex salary variables (EPF, allowances) for over 30 employees, creating PDFs one by one, and manually emailing them—wasting hours every month.',
-        solution: 'Built an integrated script that pulls centralized database data, automatically calculates deductions and additions, generates formatted PDF payslips, and triggers bulk email delivery.',
-        impact: 'Reduced a 2-day manual HR process into a 5-minute automated execution with zero calculation errors.'
+        problem: 'The brand needed a digital storefront that reflected its premium aesthetic, but large product images caused severe load delays, impacting conversion rates.',
+        solution: 'Engineered a highly optimized, component-driven UI. Implemented lazy loading for media, streamlined WooCommerce logic, and designed a frictionless checkout flow.',
+        impact: 'Achieved significantly faster page load times, elevating the brand\'s credibility and directly increasing online sales conversions.',
+        links: [{ label: 'View Live Site', url: 'https://biseka.co/' }]
       },
       {
         id: 'scrub',
+        category: 'web',
         title: 'Scrub and Butter',
         icon: 'ph-buildings',
-        summary: 'Complete technical web presence and brand architecture.',
+        summary: 'Developed the complete technical web presence and brand identity architecture.',
         role: 'Lead Web Developer',
         tags: ['Brand Identity', 'Frontend', 'Design'],
         problem: 'The client needed a digital footprint from scratch that communicated modern capability and immediately captured lead interest.',
         solution: 'Developed the complete technical architecture and frontend UI. Focused on clean layouts, strong typography, and strategic call-to-action placement.',
         impact: 'Successfully launched a scalable web presence that acts as a 24/7 lead generation asset for the business.',
-        url: 'https://scrubnbutter.com/'
+        links: [{ label: 'View Live Site', url: 'https://scrubnbutter.com/' }]
+      },
+      {
+        id: 'mob',
+        category: 'web',
+        title: 'MOB Surfskate',
+        icon: 'ph-waves',
+        summary: 'A dynamic web experience focusing on high-quality visuals, motion, and modern aesthetic.',
+        role: 'Frontend Developer',
+        tags: ['Lifestyle Brand', 'WooCommerce', 'WordPress'],
+        problem: 'The brand required a dynamic, high-energy digital presence to match its lifestyle product, with a seamless transition into e-commerce.',
+        solution: 'Built a highly visual, motion-rich frontend with a smooth WooCommerce flow perfectly optimized for mobile-first users.',
+        impact: 'Delivered a modern aesthetic that drives lifestyle brand engagement and facilitates seamless on-the-go purchases.',
+        links: [{ label: 'View Live Site', url: 'https://mobsurfskate.com/' }]
+      },
+      {
+        id: 'ola',
+        category: 'web',
+        title: 'OLA Tangalle Hotel',
+        icon: 'ph-storefront',
+        summary: 'A premium hospitality frontend highlighting immersive imagery and booking flows.',
+        role: 'Web Developer',
+        tags: ['Hospitality', 'Responsive Design', 'CodeNest'],
+        problem: 'A boutique hotel needed an immersive digital experience to highlight property visuals and drive direct booking conversions over third-party apps.',
+        solution: 'Engineered a premium, responsive frontend with a focus on immersive imagery and intuitive user journeys from landing page to booking engine.',
+        impact: 'Successfully translated high-fidelity designs into code, resulting in an elegant booking platform that elevates the hotel\'s online prestige.',
+        links: [{ label: 'View Live Site', url: 'https://olatangalle.com/' }]
+      },
+      {
+        id: 'exact',
+        category: 'web',
+        title: 'Exact Extract & LoveandLab',
+        icon: 'ph-drop',
+        summary: 'Web solutions for perfume and cosmetic brands emphasizing product presentation.',
+        role: 'Full Stack Developer',
+        tags: ['E-Commerce', 'Brand Presence', 'WooCommerce'],
+        problem: 'Two distinct product lines needed robust web solutions emphasizing high-end product presentation and reliable e-commerce integration.',
+        solution: 'Deployed dual web presence solutions utilizing WooCommerce, prioritizing distinct brand aesthetics while maintaining robust cart functionality.',
+        impact: 'Established stable, high-quality digital storefronts that handle active product catalogs and customer transactions simultaneously.',
+        links: [
+            { label: 'View Extract', url: 'https://exactextract.lk/' },
+            { label: 'View LoveandLab', url: 'https://loveandlab.com/' }
+        ]
+      },
+      {
+        id: 'invoice',
+        category: 'automation',
+        title: 'Biseka Bulk Invoice Automation',
+        icon: 'ph-kanban',
+        summary: 'Automated framework instantly generating error-free tax invoices for Biseka Maldives.',
+        role: 'Automation Logic Creator',
+        tags: ['Google Apps Script', 'Financial Logic', 'Sheets'],
+        problem: 'Generating monthly tax invoices involved high manual effort, risking human errors in 20% discounts and 8% GST calculations.',
+        solution: 'Engineered a Google Apps Script framework that centralizes data, automatically applying hard-coded financial logic to dynamic invoice templates.',
+        impact: 'Achieved instant, error-free generation of complex tax documents, archiving them systematically by month for easy business record retrieval.',
+        links: [] // Internal tool
+      },
+      {
+        id: 'payroll',
+        category: 'automation',
+        title: 'Payslip & Email Delivery Automation',
+        icon: 'ph-paper-plane-right',
+        summary: 'Integrated system that tracks salary components, generates PDFs, and automates emails.',
+        role: 'System Automation Creator',
+        tags: ['Python / Apps Script', 'HR', 'API Delivery'],
+        problem: 'The HR department was manually calculating complex salary variables for over 30 employees, creating individual PDFs, and emailing them manually.',
+        solution: 'Built an integrated script that pulls database data, calculates deductions (EPF), generates formatted PDF payslips, and triggers bulk email delivery.',
+        impact: 'Reduced a multi-day manual HR process into a 5-minute automated execution with flawless calculation accuracy.',
+        links: [] // Internal tool
       },
       {
         id: 'sms',
-        title: 'Logistics SMS Framework',
+        category: 'automation',
+        title: 'Logistics SMS Notification Framework',
         icon: 'ph-device-mobile',
-        summary: 'Centralized API bridging courier data with customer SMS.',
-        role: 'Backend Logic Engineer',
-        tags: ['API Integration', 'Logistics', 'Automation'],
-        problem: 'Customer service was overwhelmed by "Where is my order?" calls because tracking numbers across different delivery agents (Citypack, Fardar) were not actively communicated to customers.',
-        solution: 'Created a centralized command center that automatically pairs courier tracking numbers with the correct tracking URLs and triggers personalized SMS notifications to the customer upon dispatch.',
-        impact: 'Drastically reduced customer support tickets and improved post-purchase customer satisfaction through proactive communication.'
+        summary: 'Command center bridging courier data with automated customer SMS communication.',
+        role: 'Backend API Integrator',
+        tags: ['API Integration', 'Logistics', 'Status Logging'],
+        problem: 'Customer service was overwhelmed by tracking inquiries because tracking IDs across delivery agents (Citypack, Fardar) weren\'t automatically communicated.',
+        solution: 'Created a centralized logic controller that automatically pairs courier tracking numbers with correct URLs and triggers personalized SMS notifications upon dispatch.',
+        impact: 'Drastically reduced customer support tickets and improved post-purchase satisfaction through proactive status communication.',
+        links: [] // Internal tool
+      },
+      {
+        id: 'sheets',
+        category: 'automation',
+        title: 'Automated Monthly Sheet Generation',
+        icon: 'ph-copy',
+        summary: 'Centralized controller automating deployment and organization of tracking sheets.',
+        role: 'Data Architect',
+        tags: ['Workspace', 'Architecture', 'Bulk Execution'],
+        problem: 'Setting up specialized monthly tracking sheets across various BISEKA locations was a tedious, repetitive structural bottleneck for management.',
+        solution: 'Created a centralized controller that duplicates master templates, auto-renames files by month/brand, and routes them to precise Destination Folder IDs.',
+        impact: 'Reduced deployment time of massive business tracker suites (SHOP logs, BIS logs) from hours to just minutes, ensuring strict formatting compliance.',
+        links: [] // Internal tool
+      },
+      {
+        id: 'repos',
+        category: 'repos',
+        title: 'Development Archives',
+        icon: 'ph-github-logo',
+        summary: 'A collection of technical prototypes, HTML/JS builds, and concept layouts.',
+        role: 'Developer',
+        tags: ['Code Repos', 'JavaScript', 'HTML/CSS', 'GitHub'],
+        problem: 'A need to consolidate and showcase various technical prototypes, interactive web tools, and pure HTML/CSS/JS layouts outside of professional client work.',
+        solution: 'Curated a central GitHub repository linking to live deployments of tools like a Customer Care Asset Form, a Movie Database layout, and Interactive JS games.',
+        impact: 'Provides a transparent, accessible archive demonstrating continuous learning, raw coding capabilities, and versatile technical interests.',
+        links: [
+            { label: 'View GitHub Profile', url: 'https://github.com/nikithaKesh' },
+            { label: 'Asset Form Demo', url: 'https://nikithakesh.github.io/Employee-Assets/' }
+        ]
       }
     ];
 
     const projectGrid = document.getElementById('projectGrid');
     
     // Render Cards
-    projects.forEach(p => {
-      const card = document.createElement('article');
-      card.className = 'project-card reveal';
-      card.innerHTML = `
-        <div class="project-top">
-          <div class="project-icon"><i class="ph-light ${p.icon}"></i></div>
-          <button class="btn btn-secondary" style="min-height:36px; padding:0 16px; font-size:0.85rem;" onclick="openModal('${p.id}')">Case Study</button>
-        </div>
-        <h3 class="title-md" style="margin-bottom: 12px;">${p.title}</h3>
-        <p class="small">${p.summary}</p>
-        <div class="project-tags">
-          ${p.tags.slice(0, 2).map(t => `<span class="chip">${t}</span>`).join('')}
-        </div>
-      `;
-      projectGrid.appendChild(card);
+    const renderCards = () => {
+      projectGrid.innerHTML = '';
+      projects.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'project-card reveal show';
+        card.dataset.category = p.category;
+        card.innerHTML = `
+          <div class="project-top">
+            <div class="project-icon"><i class="ph-light ${p.icon}"></i></div>
+            <button class="btn btn-secondary" style="min-height:36px; padding:0 16px; font-size:0.85rem;" onclick="openModal('${p.id}')">Case Study</button>
+          </div>
+          <h3 class="title-md" style="margin-bottom: 12px;">${p.title}</h3>
+          <p class="small">${p.summary}</p>
+          <div class="project-tags">
+            ${p.tags.slice(0, 3).map(t => `<span class="chip">${t}</span>`).join('')}
+          </div>
+        `;
+        projectGrid.appendChild(card);
+      });
+    };
+    renderCards(); // Initial Render
+
+    // Filter Logic
+    const filters = document.querySelectorAll('#projectFilters button');
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(b => b.classList.remove('active')); 
+        btn.classList.add('active');
+        const filterValue = btn.dataset.filter;
+        
+        const allCards = document.querySelectorAll('#projectGrid .project-card');
+        allCards.forEach(card => {
+          if (filterValue === 'all' || card.dataset.category === filterValue) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
 
     // Modal Logic
@@ -947,10 +1073,10 @@
       document.getElementById('modalImpact').textContent = data.impact;
 
       const linksDiv = document.getElementById('modalLinks');
-      if (data.url) {
-        linksDiv.innerHTML = `<a href="${data.url}" target="_blank" class="btn btn-primary">View Live Project <i class="ph-light ph-arrow-up-right"></i></a>`;
+      if (data.links && data.links.length > 0) {
+        linksDiv.innerHTML = data.links.map(l => `<a href="${l.url}" target="_blank" class="btn btn-primary">${l.label} <i class="ph-light ph-arrow-up-right"></i></a>`).join('');
       } else {
-        linksDiv.innerHTML = `<span class="chip" style="background:var(--primary-alpha-10); border:none; color:var(--primary);">Internal System</span>`;
+        linksDiv.innerHTML = `<span class="chip" style="background:var(--primary-alpha-10); border:none; color:var(--primary); padding: 12px 16px;">Internal Backend System / Tool</span>`;
       }
 
       modal.classList.add('show');
@@ -979,11 +1105,13 @@
         ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       });
 
-      const interactables = document.querySelectorAll('a, button, input, textarea, .project-card');
-      interactables.forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('active'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('active'));
-      });
+      // Update interactables to handle dynamic project cards
+      document.body.addEventListener('mouseenter', (e) => {
+        if (e.target.closest('a, button, input, textarea, .project-card')) ring.classList.add('active');
+      }, true);
+      document.body.addEventListener('mouseleave', (e) => {
+        if (e.target.closest('a, button, input, textarea, .project-card')) ring.classList.remove('active');
+      }, true);
     }
   </script>
 </body>
