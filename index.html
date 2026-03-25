@@ -14,7 +14,7 @@
 
   <title>Nikitha Keshan | Software & System Developer</title>
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0e0c'/><text x='50' y='72' font-size='70' font-family='serif' fill='%23d4c2a5' text-anchor='middle'>N</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23030b14'/><text x='50' y='72' font-size='70' font-family='serif' fill='%2390e0ef' text-anchor='middle'>N</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,45 +24,46 @@
 
   <style>
     /* =========================================
-       CSS VARIABLES: THEME SYSTEM
+       CSS VARIABLES: OCEAN THEME SYSTEM
        ========================================= */
     :root {
-      /* Dark Theme (Nature/Futuristic Vibe) */
-      --bg: #0b0e0c;          
-      --bg-soft: #121713;     
-      --surface: rgba(22, 28, 24, 0.4); 
-      --surface-2: rgba(30, 38, 32, 0.8);
-      --surface-3: rgba(255, 255, 255, 0.05);
+      /* Dark Theme (Deep Sea / Bioluminescence) */
+      --bg: #030a12;          
+      --bg-soft: #08121e;     
+      --surface: rgba(8, 18, 30, 0.45); 
+      --surface-2: rgba(12, 26, 42, 0.85);
+      --surface-3: rgba(255, 255, 255, 0.04);
       
-      --text: #e8ece9;        
-      --muted: #9ba89f;       
-      --muted-2: #6b7a70;
+      --text: #e2f0f9;        
+      --muted: #83a2b5;       
+      --muted-2: #4a6c82;
       
-      --line: rgba(181, 201, 186, 0.1);
-      --line-strong: rgba(181, 201, 186, 0.25);
+      --line: rgba(100, 160, 200, 0.12);
+      --line-strong: rgba(100, 160, 200, 0.25);
       
-      --primary: #759279;     
-      --primary-2: #a2bba5;   
-      --accent: #d4c2a5;      
+      /* Glowing Bioluminescent Blue & Coral Accent */
+      --primary: #00b4d8;     
+      --primary-2: #90e0ef;   
+      --accent: #ff8fa3;      
       
-      --btn-text: #0b0e0c;
+      --btn-text: #011627;
       
-      --nav-bg: rgba(11, 14, 12, 0.5);
-      --nav-bg-scrolled: rgba(11, 14, 12, 0.85);
-      --backdrop: rgba(5, 8, 6, 0.8);
+      --nav-bg: rgba(3, 10, 18, 0.5);
+      --nav-bg-scrolled: rgba(3, 10, 18, 0.85);
+      --backdrop: rgba(1, 5, 10, 0.8);
       --input-bg: rgba(0, 0, 0, 0.2);
       
-      --shadow: 0 30px 80px rgba(0,0,0,0.6);
-      --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.4);
+      --shadow: 0 30px 80px rgba(0,0,0,0.7);
+      --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.5);
 
-      /* Glows & Interactive States */
-      --glow-1: rgba(117, 146, 121, 0.08);
-      --glow-2: rgba(212, 194, 165, 0.05);
-      --glow-3: rgba(117, 146, 121, 0.03);
-      --primary-glow: rgba(117, 146, 121, 0.2);
-      --primary-glow-hover: rgba(117, 146, 121, 0.3);
-      --primary-alpha-10: rgba(117, 146, 121, 0.1);
-      --cursor-bg: rgba(162, 187, 165, 0.1);
+      /* Dynamic Alphas for Glows and Hovers */
+      --glow-1: rgba(0, 180, 216, 0.08);
+      --glow-2: rgba(255, 143, 163, 0.05);
+      --glow-3: rgba(144, 224, 239, 0.04);
+      --primary-glow: rgba(0, 180, 216, 0.25);
+      --primary-glow-hover: rgba(0, 180, 216, 0.4);
+      --primary-alpha-10: rgba(0, 180, 216, 0.1);
+      --cursor-bg: rgba(144, 224, 239, 0.15);
       
       --radius-xl: 32px;
       --radius-lg: 24px;
@@ -79,48 +80,49 @@
     }
 
     [data-theme="light"] {
-      /* Light Theme (Fresh/Minimal Vibe) */
-      --bg: #f4f7f5; 
-      --bg-soft: #e9eee9; 
-      --surface: rgba(255, 255, 255, 0.6); 
+      /* Light Theme (Shallow Water / Tropic Coast) */
+      --bg: #eff5f8; 
+      --bg-soft: #e2eef5; 
+      --surface: rgba(255, 255, 255, 0.65); 
       --surface-2: rgba(255, 255, 255, 0.9);
       --surface-3: rgba(255, 255, 255, 0.8); 
       
-      --text: #17241d; 
-      --muted: #5b6b61; 
-      --muted-2: #759181; 
+      --text: #0a1f2e; 
+      --muted: #567285; 
+      --muted-2: #7c99ab; 
       
-      --line: rgba(58, 125, 84, 0.1); 
-      --line-strong: rgba(58, 125, 84, 0.25); 
+      --line: rgba(0, 119, 182, 0.12); 
+      --line-strong: rgba(0, 119, 182, 0.25); 
       
-      --primary: #3a7d54; 
-      --primary-2: #245e3a; 
-      --accent: #c46835; 
+      /* Deep Ocean Blue & Warm Sand Accent */
+      --primary: #0077b6; 
+      --primary-2: #023e8a; 
+      --accent: #f28482; 
       
       --btn-text: #ffffff;
 
-      --nav-bg: rgba(244, 247, 245, 0.6);
-      --nav-bg-scrolled: rgba(244, 247, 245, 0.9);
-      --backdrop: rgba(244, 247, 245, 0.8);
+      --nav-bg: rgba(239, 245, 248, 0.6);
+      --nav-bg-scrolled: rgba(239, 245, 248, 0.9);
+      --backdrop: rgba(239, 245, 248, 0.8);
       --input-bg: rgba(255, 255, 255, 0.8);
 
-      --shadow: 0 30px 60px rgba(23, 36, 29, 0.08); 
-      --shadow-soft: 0 15px 30px rgba(23, 36, 29, 0.04);
+      --shadow: 0 30px 60px rgba(0, 119, 182, 0.06); 
+      --shadow-soft: 0 15px 30px rgba(0, 119, 182, 0.04);
 
-      --glow-1: rgba(255, 255, 255, 0.8); 
-      --glow-2: rgba(255, 255, 255, 0.5); 
-      --glow-3: rgba(255, 255, 255, 0.6); 
-      --primary-glow: rgba(58, 125, 84, 0.15);
-      --primary-glow-hover: rgba(58, 125, 84, 0.25);
-      --primary-alpha-10: rgba(58, 125, 84, 0.08);
-      --cursor-bg: rgba(58, 125, 84, 0.1);
+      --glow-1: rgba(255, 255, 255, 0.9); 
+      --glow-2: rgba(0, 119, 182, 0.06); 
+      --glow-3: rgba(255, 255, 255, 0.7); 
+      --primary-glow: rgba(0, 119, 182, 0.15);
+      --primary-glow-hover: rgba(0, 119, 182, 0.25);
+      --primary-alpha-10: rgba(0, 119, 182, 0.08);
+      --cursor-bg: rgba(0, 119, 182, 0.1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
     /* =========================================
-       GLOBAL ACCESSIBILITY & BASE
+       GLOBAL ACCESSIBILITY & ANIMATED BACKGROUNDS
        ========================================= */
     body {
       min-height: 100vh;
@@ -132,26 +134,39 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Focus states for Keyboard Navigation */
     :focus-visible {
       outline: 2px solid var(--primary);
       outline-offset: 4px;
       border-radius: var(--radius-sm);
     }
 
-    /* Ambient Background */
+    /* Animated Ambient Ocean Currents (Gradients) */
     body::before {
-      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -2;
-      background: radial-gradient(circle at 10% 20%, var(--glow-1), transparent 40%),
-                  radial-gradient(circle at 90% 80%, var(--glow-2), transparent 40%),
-                  radial-gradient(circle at 50% 50%, var(--glow-3), transparent 60%);
+      content: ""; position: fixed; inset: -20%; pointer-events: none; z-index: -2;
+      background: radial-gradient(circle at 20% 30%, var(--glow-1), transparent 50%),
+                  radial-gradient(circle at 80% 70%, var(--glow-2), transparent 50%),
+                  radial-gradient(circle at 50% 50%, var(--glow-3), transparent 70%);
+      animation: oceanCurrents 25s ease-in-out infinite alternate;
       transition: background var(--transition);
     }
 
+    @keyframes oceanCurrents {
+      0% { transform: translate(0%, 0%) scale(1); }
+      50% { transform: translate(-3%, 4%) scale(1.05); }
+      100% { transform: translate(2%, -3%) scale(1); }
+    }
+
+    /* Animated Texture Noise (Flowing Water Particles) */
     body::after {
-      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      content: ""; position: fixed; inset: -100%; pointer-events: none; z-index: -1;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.03; mix-blend-mode: overlay;
+      opacity: 0.025; mix-blend-mode: overlay;
+      animation: noiseDrift 20s linear infinite;
+    }
+
+    @keyframes noiseDrift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(15%, 15%); }
     }
 
     ::selection { background: var(--primary-glow); color: var(--text); }
@@ -293,16 +308,42 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
     
     .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    
+    /* Water Drop / Fluid Frame */
     .organic-frame {
-      width: min(100%, 450px); aspect-ratio: 4/5; border-radius: var(--radius-lg);
+      width: min(100%, 450px); aspect-ratio: 4/5; 
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
       background: linear-gradient(135deg, var(--surface), transparent);
-      border: 1px solid var(--line); box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line); box-shadow: inset 0 0 40px var(--primary-alpha-10), var(--shadow-soft);
       display: flex; flex-direction: column; padding: 40px; justify-content: flex-end; position: relative; overflow: hidden;
+      animation: waterMorph 15s ease-in-out infinite alternate;
+    }
+    
+    @keyframes waterMorph {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+      50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+      100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    }
+
+    /* Inner glowing blobs resembling deep sea light */
+    .organic-blob {
+      position: absolute; width: 300px; height: 300px;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      opacity: 0.2; filter: blur(40px); animation: float 10s ease-in-out infinite;
+      transition: var(--transition); z-index: -1;
+    }
+    .blob-1 { top: -50px; left: -50px; }
+    .blob-2 { bottom: -50px; right: -50px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 40px); }
     }
     
     .status-indicator {
-      position: absolute; top: 24px; right: 24px; display: flex; align-items: center; gap: 8px;
+      position: absolute; top: 32px; right: 32px; display: flex; align-items: center; gap: 8px;
       font-size: 0.8rem; font-family: var(--font-mono); color: var(--primary-2);
+      background: var(--bg-soft); padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line);
     }
     .status-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); animation: pulse 2s infinite; }
     
@@ -326,7 +367,7 @@
       padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
       transition: var(--transition); display: flex; flex-direction: column; cursor: pointer;
     }
-    .project-card:hover { transform: translateY(-6px); border-color: var(--primary); background: var(--surface-2); }
+    .project-card:hover { transform: translateY(-6px); border-color: var(--primary); background: var(--surface-2); box-shadow: var(--shadow-soft); }
     
     .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
     .project-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--surface-3); display: grid; place-items: center; font-size: 1.5rem; color: var(--primary-2); border: 1px solid var(--line); }
@@ -419,7 +460,8 @@
       .nav-links, .hide-mobile { display: none; }
       .mobile-toggle { display: block; }
       .hero-visual { order: -1; margin-bottom: 24px; }
-      .organic-frame { width: 100%; aspect-ratio: auto; min-height: 300px; }
+      .organic-frame { width: 100%; aspect-ratio: auto; min-height: 300px; border-radius: var(--radius-lg); animation: none; }
+      .organic-blob { display: none; }
     }
     @media (max-width: 600px) {
       .section { padding: 40px 0; }
@@ -473,7 +515,7 @@
     <section id="home" class="section">
       <div class="container hero">
         <div class="hero-copy reveal">
-          <div class="section-tag mono"><i class="ph-light ph-terminal-window"></i> System Architecture & Web</div>
+          <div class="section-tag mono"><i class="ph-light ph-waves"></i> Fluid digital solutions</div>
           <h1 class="title-xl" style="margin-bottom: 24px;">
             I engineer <span class="italic-serif">business systems</span> and scalable web applications.
           </h1>
@@ -487,12 +529,17 @@
         </div>
         <div class="hero-visual reveal">
           <div class="organic-frame">
+            <div class="organic-blob blob-1"></div>
+            <div class="organic-blob blob-2"></div>
+            
             <div class="status-indicator">
               <div class="status-dot"></div> Available for Work
             </div>
-            <div class="mono" style="margin-bottom: 8px;">Stack / Primary</div>
-            <h3 class="title-md">C# • Python • React • SQL</h3>
-            <p class="small" style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px;">Building robust backend logic with minimalist, highly responsive frontends.</p>
+            <div style="position: relative; z-index: 2;">
+              <div class="mono" style="margin-bottom: 8px;">Stack / Primary</div>
+              <h3 class="title-md">C# • Python • React • SQL</h3>
+              <p class="small" style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px;">Building robust backend logic with minimalist, highly responsive frontends.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -501,7 +548,7 @@
     <section id="about" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-tag mono"><i class="ph-light ph-user"></i> The Builder</div>
+          <div class="section-tag mono"><i class="ph-light ph-anchor"></i> The Builder</div>
           <h2 class="title-lg">Merging logic with execution.</h2>
         </div>
         
@@ -543,7 +590,7 @@
     <section id="skills" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-tag mono"><i class="ph-light ph-code-block"></i> Technical Arsenal</div>
+          <div class="section-tag mono"><i class="ph-light ph-compass"></i> Technical Arsenal</div>
           <h2 class="title-lg">Tools cultivated for impact.</h2>
           <p class="lead" style="margin-top: 16px;">I select tools based on project requirements—prioritizing performance, scalability, and long-term maintainability.</p>
         </div>
@@ -589,7 +636,7 @@
     <section id="work" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-tag mono"><i class="ph-light ph-folder-open"></i> Deployments</div>
+          <div class="section-tag mono"><i class="ph-light ph-drop"></i> Deployments</div>
           <h2 class="title-lg">Selected proof of work.</h2>
         </div>
 
