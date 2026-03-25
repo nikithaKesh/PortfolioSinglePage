@@ -238,49 +238,6 @@
     }
 
     /* =========================================
-       OCEAN WAVES & NEON FISH ANIMATIONS
-       ========================================= */
-    .wave-container {
-      position: fixed; bottom: 0; left: 0; width: 100%; height: 140px;
-      pointer-events: none; z-index: -1; overflow: hidden;
-    }
-    .wave {
-      position: absolute; bottom: 0; left: 0; width: 200%; height: 100%; background-color: var(--primary);
-      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z'/%3E%3C/svg%3E");
-      -webkit-mask-repeat: repeat-x;
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z'/%3E%3C/svg%3E");
-      mask-repeat: repeat-x; transition: background-color var(--transition);
-    }
-    .wave-1 { animation: waveDrift 20s linear infinite; opacity: 0.1; -webkit-mask-size: 50% 100%; mask-size: 50% 100%; }
-    .wave-2 { animation: waveDrift 15s linear infinite reverse; opacity: 0.15; -webkit-mask-size: 40% 80%; mask-size: 40% 80%; bottom: -10px; }
-    .wave-3 { animation: waveDrift 25s linear infinite; opacity: 0.08; -webkit-mask-size: 60% 110%; mask-size: 60% 110%; bottom: -20px; }
-
-    @keyframes waveDrift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    /* Aquarium / Neon Fish Layer */
-    #aquarium { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
-    .fish-wrapper { position: absolute; left: 0; width: 100%; }
-    .fish-wrapper.right { animation: swimRight var(--dur) linear var(--del) infinite; }
-    .fish-wrapper.left { animation: swimLeft var(--dur) linear var(--del) infinite; }
-
-    @keyframes swimRight { 0% { transform: translateX(-10%); } 100% { transform: translateX(110%); } }
-    @keyframes swimLeft { 0% { transform: translateX(110%); } 100% { transform: translateX(-10%); } }
-
-    .fish {
-      position: absolute; width: 24px; height: 8px; background: var(--fish-color); border-radius: 50%;
-      box-shadow: 0 0 10px var(--fish-color), 0 0 20px var(--fish-color);
-      animation: fishWobble 3s ease-in-out infinite alternate; opacity: 0.65;
-    }
-    .fish::after {
-      content: ''; position: absolute; border-left: 8px solid var(--fish-color);
-      border-top: 5px solid transparent; border-bottom: 5px solid transparent; left: -6px; top: -1px;
-    }
-    .fish-wrapper.right .fish { transform: scaleX(var(--scale)) scaleY(var(--scale)); }
-    .fish-wrapper.left .fish { transform: scaleX(calc(var(--scale) * -1)) scaleY(var(--scale)); }
-
-    @keyframes fishWobble { 0% { margin-top: -12px; } 100% { margin-top: 12px; } }
-
-    /* =========================================
        BASE STYLES & LAYOUT
        ========================================= */
     ::selection { background: var(--primary-glow); color: var(--text); }
@@ -450,7 +407,6 @@
       .mobile-toggle { display: block; }
       .hero-visual { order: -1; margin-bottom: 24px; }
       .organic-frame { width: 100%; aspect-ratio: auto; min-height: 300px; border-radius: var(--radius-lg); animation: none; }
-      .organic-blob { display: none; }
     }
     @media (max-width: 600px) {
       .section { padding: 40px 0; }
@@ -461,7 +417,9 @@
     }
   </style>
 </head>
-<body style="overflow: hidden;"> <div id="preloader">
+<body style="overflow: hidden;"> 
+  
+  <div id="preloader">
     <div class="sonar-container">
       <div class="sonar-sweep"></div>
       <div class="sonar-blip blip-1"></div>
@@ -473,14 +431,6 @@
 
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
-
-  <div class="wave-container" aria-hidden="true">
-    <div class="wave wave-1"></div>
-    <div class="wave wave-2"></div>
-    <div class="wave wave-3"></div>
-  </div>
-
-  <div id="aquarium" aria-hidden="true"></div>
 
   <header class="site-header" id="header">
     <div class="nav-shell">
@@ -534,9 +484,6 @@
         </div>
         <div class="hero-visual reveal">
           <div class="organic-frame">
-            <div class="organic-blob blob-1"></div>
-            <div class="organic-blob blob-2"></div>
-            
             <div class="status-indicator">
               <div class="status-dot"></div> Available for Work
             </div>
@@ -1130,36 +1077,6 @@
       document.body.addEventListener('mouseleave', (e) => {
         if (e.target.closest('a, button, input, textarea, .project-card')) ring.classList.remove('active');
       }, true);
-    }
-
-    // --- Neon Fish Generator ---
-    const aquarium = document.getElementById('aquarium');
-    const fishColors = ['var(--primary)', 'var(--primary-2)', 'var(--accent)'];
-    const numFish = 15; // Amount of fish
-
-    for (let i = 0; i < numFish; i++) {
-      const fishWrapper = document.createElement('div');
-      const isRight = Math.random() > 0.5;
-      fishWrapper.className = `fish-wrapper ${isRight ? 'right' : 'left'}`;
-      
-      const duration = Math.random() * 20 + 20; // 20s to 40s to cross screen
-      const delay = Math.random() * -40; // Negative delay so they start mid-screen
-      const top = Math.random() * 95; // 0 to 95vh height
-      const scale = Math.random() * 0.8 + 0.4; // 0.4x to 1.2x scale
-      const color = fishColors[Math.floor(Math.random() * fishColors.length)];
-
-      fishWrapper.style.top = `${top}vh`;
-      fishWrapper.style.setProperty('--dur', `${duration}s`);
-      fishWrapper.style.setProperty('--del', `${delay}s`);
-      fishWrapper.style.setProperty('--scale', scale);
-
-      const fish = document.createElement('div');
-      fish.className = 'fish';
-      fish.style.setProperty('--fish-color', color);
-      fish.style.animationDelay = `${Math.random() * -3}s`; // Randomize wobble timing
-
-      fishWrapper.appendChild(fish);
-      aquarium.appendChild(fishWrapper);
     }
   </script>
 </body>
