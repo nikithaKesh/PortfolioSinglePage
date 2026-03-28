@@ -1095,10 +1095,10 @@
 
           <div class="card contact-form-card">
             <div class="form-state" id="formState" aria-live="polite"></div>
-            <p class="form-note">Write here your massage!.</p>
+            <p class="form-note">Tell me about your project goals, timeline, and current bottlenecks.</p>
 
-            <form id="contactForm" novalidate method="POST" data-endpoint="">
-              <input type="text" name="company_website" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
+            <form id="contactForm" action="https://formspree.io/f/xzdkdlvr" novalidate method="POST">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
 
               <div class="field" data-field="name">
                 <label for="name">Name</label>
@@ -1107,14 +1107,27 @@
               </div>
 
               <div class="field" data-field="email">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required />
+                <label for="email">Work Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="john@company.com" required />
                 <div class="field-error" id="emailError" aria-live="polite"></div>
+              </div>
+
+              <div class="field" data-field="inquiry_type">
+                <label for="inquiry_type">Collaboration Type</label>
+                <select id="inquiry_type" name="inquiry_type" class="form-control" style="appearance: auto; padding-right: 32px;" required>
+                  <option value="" disabled selected>Select an area of focus...</option>
+                  <option value="Web Architecture">Web Architecture & Frontend</option>
+                  <option value="System Automation">Business System Automation</option>
+                  <option value="Internal Tooling">Internal Tools & Dashboards</option>
+                  <option value="Contract / Full-Time">Contract or Full-Time Role</option>
+                  <option value="Other">Other Inquiry</option>
+                </select>
+                <div class="field-error" id="inquiry_typeError" aria-live="polite"></div>
               </div>
 
               <div class="field" data-field="message">
                 <label for="message">Project Details</label>
-                <textarea id="message" name="message" class="form-control" placeholder="How can I help optimize your business?" required></textarea>
+                <textarea id="message" name="message" class="form-control" placeholder="How can I help optimize your operations or build your platform?" required></textarea>
                 <div class="field-error" id="messageError" aria-live="polite"></div>
               </div>
 
@@ -1123,7 +1136,6 @@
                   <span class="spinner" aria-hidden="true"></span>
                   <span class="submit-label">Send Inquiry</span>
                 </button>
-                <p class="form-note">Later integration: set <code>data-endpoint</code> or <code>action</code> on this form and the same UI will continue to work.</p>
               </div>
             </form>
           </div>
@@ -1722,8 +1734,12 @@
         if (state.lastFocus && typeof state.lastFocus.focus === 'function') state.lastFocus.focus();
       };
 
+      // -----------------------------------------------------
+      // UPDATED FORM VALIDATION LOGIC
+      // -----------------------------------------------------
       const validateField = (field) => {
         const input = $(`[name="${field}"]`, els.contactForm);
+        if (!input) return true; // Safety check
         const fieldWrap = input.closest('.field');
         const errorEl = $(`#${input.id}Error`);
         const value = input.value.trim();
@@ -1737,7 +1753,7 @@
         return !error;
       };
 
-      const validateForm = () => ['name', 'email', 'message'].every(validateField);
+      const validateForm = () => ['name', 'email', 'inquiry_type', 'message'].every(validateField);
 
       const setFormState = (type, message = '') => {
         els.formState.className = 'form-state';
@@ -1754,14 +1770,16 @@
 
       const submitContactForm = async (event) => {
         event.preventDefault();
-        if ($('[name="company_website"]', els.contactForm).value.trim()) return;
+        
+        // Formspree honeypot check
+        if ($('[name="_gotcha"]', els.contactForm).value.trim()) return;
 
         setFormState('', '');
         if (!validateForm()) { setFormState('error', 'Please fix the highlighted fields and try again.'); return; }
 
         setSubmitLoading(true);
         const formData = new FormData(els.contactForm);
-        const endpoint = els.contactForm.dataset.endpoint || els.contactForm.getAttribute('action') || '';
+        const endpoint = els.contactForm.getAttribute('action');
 
         try {
           if (endpoint) {
@@ -1775,7 +1793,7 @@
           $$('.field', els.contactForm).forEach((field) => field.classList.remove('invalid'));
           $$('.field-error', els.contactForm).forEach((errorEl) => errorEl.textContent = '');
 
-          setFormState('success', `Thanks, ${Object.fromEntries(formData.entries()).name}. Your message is ready and the form flow is working.`);
+          setFormState('success', `Thanks, ${Object.fromEntries(formData.entries()).name}. Your inquiry has been sent successfully.`);
           showToast('Inquiry sent successfully.');
         } catch (error) {
           setFormState('error', 'Something went wrong while sending the form. Please try again or email me directly.');
@@ -1786,10 +1804,12 @@
       };
 
       const initContactForm = () => {
-        ['name', 'email', 'message'].forEach((field) => {
+        ['name', 'email', 'inquiry_type', 'message'].forEach((field) => {
           const input = $(`[name="${field}"]`, els.contactForm);
-          input.addEventListener('blur', () => validateField(field));
-          input.addEventListener('input', () => { if (input.closest('.field').classList.contains('invalid')) validateField(field); });
+          if (input) {
+            input.addEventListener('blur', () => validateField(field));
+            input.addEventListener('input', () => { if (input.closest('.field').classList.contains('invalid')) validateField(field); });
+          }
         });
         els.contactForm.addEventListener('submit', submitContactForm);
       };
