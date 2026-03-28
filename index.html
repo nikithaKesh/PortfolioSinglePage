@@ -514,23 +514,123 @@
     }
 
     @media (max-width: 640px) {
-      .section { padding: 64px 0; }
+      /* 1. Global Section Spacing & Typography */
+      .section { padding: 48px 0; }
+      .section-head { margin-bottom: 24px; }
       .container { width: min(var(--container), calc(100% - 32px)); }
-      main { padding-top: 100px; }
+      main { padding-top: 80px; }
+      
+      /* Slightly scale down massive headings to reduce vertical pushing */
+      .title-xl { font-size: 2.25rem; }
+      .title-lg { font-size: 1.75rem; }
+      .lead { font-size: 1rem; margin-top: 12px !important; }
+
+      /* Reduce structural grid gaps to prevent long-scroll flows */
+      .hero, .about-shell, .contact-grid, .timeline-shell, .grid-2 { gap: 32px; }
+      
+      /* Vertical grids */
+      .project-grid, .about-deep-grid, .modal-meta-grid, .gallery-mini-grid { 
+        grid-template-columns: 1fr; 
+        gap: 16px; 
+      }
+
+      /* ========================================================
+         HORIZONTAL SCROLLING CAROUSELS (MOBILE ONLY)
+         ======================================================== */
+      .services-grid, .process-grid, .cred-grid, .now-grid, .logo-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 24px; /* Prevents box-shadow clipping */
+        margin-bottom: -8px; /* Counters the extra bottom padding */
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox hide scrollbar */
+      }
+      
+      /* Chrome/Safari hide scrollbar */
+      .services-grid::-webkit-scrollbar, 
+      .process-grid::-webkit-scrollbar, 
+      .cred-grid::-webkit-scrollbar, 
+      .now-grid::-webkit-scrollbar, 
+      .logo-grid::-webkit-scrollbar {
+        display: none; 
+      }
+
+      /* Card Sizing: 85% width reveals the edge of the next card */
+      .services-grid > *, .process-grid > *, .cred-grid > *, .now-grid > * {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+      }
+
+      /* Logos can be slightly smaller so you see more at once */
+      .logo-grid > * {
+        flex: 0 0 60%;
+        scroll-snap-align: start;
+      }
+
+      /* Invisible spacer so the last item doesn't stick to the right edge of the screen */
+      .services-grid::after, .process-grid::after, .cred-grid::after, .now-grid::after, .logo-grid::after {
+        content: "";
+        flex: 0 0 1px;
+      }
+
+      /* 2. Compact the Hero */
+      .hero { min-height: auto; }
+      .hero-copy { gap: 16px; }
       .hero-actions, .hero-utility, .footer-shell { flex-direction: column; align-items: stretch; }
       .hero-actions .btn, .hero-utility .btn, .hero-utility .chip, .contact-form-card .btn, .mobile-panel .btn { width: 100%; }
-      .services-grid, .process-grid, .cred-grid, .now-grid, .logo-grid, .project-grid, .about-deep-grid, .modal-meta-grid, .gallery-mini-grid { grid-template-columns: 1fr; }
-      .skill-row { grid-template-columns: 1fr; padding: 24px 0; }
-      .modal { width: calc(100% - 16px); }
-      .modal-header, .modal-body, .modal-footer { padding-left: 24px; padding-right: 24px; }
-      .hero-frame { min-height: 400px; padding: 24px; }
-      .hero-stack { padding: 24px; }
-      .metric-grid { grid-template-columns: 1fr; }
+      /* Remove forced height so it hugs the internal stack perfectly */
+      .hero-frame { min-height: auto; padding: 20px; }
+      .hero-stack { padding: 20px; gap: 16px; }
+      .metric-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* 3. Disable Fixed Heights & Reduce Card Padding Globally */
+      .card-pad { padding: 20px; }
+      .service-card { min-height: auto; padding: 20px; gap: 12px; }
+      .process-step { min-height: auto; padding: 20px; gap: 12px; }
+      .now-card { min-height: auto; padding: 20px; gap: 12px; }
+      .testimonial-card { min-height: auto; padding: 20px; gap: 12px; }
+      .about-media { min-height: 240px; }
+      .mini-panel { padding: 16px; gap: 4px; }
+
+      /* 4. Improve Skills & Timeline */
+      .skill-row { grid-template-columns: 1fr; padding: 16px 0; gap: 12px; }
+      .timeline-item { padding-left: 20px; gap: 8px; }
+
+      /* 5. Compact Projects Section */
+      .featured-project { padding: 16px; gap: 16px; }
+      /* Overrides the inline HTML style without breaking desktop */
+      .featured-project > .card { padding: 20px !important; gap: 12px !important; }
+      .featured-thumb { min-height: 200px; }
+      .thumb-caption { padding: 16px; }
+      .project-card { padding: 16px; gap: 16px; }
+      .project-thumb { min-height: 160px; padding: 16px; gap: 12px; }
+      .project-toolbar { margin-bottom: 24px; padding: 16px; gap: 16px; }
+
+      /* 6. Compact Contact & Footer */
+      .contact-panel { gap: 16px; }
+      .social-btn { padding: 16px; gap: 12px; }
+      .social-icon { width: 44px; height: 44px; font-size: 1.25rem; }
+      .compact-btn { width: 44px; height: 44px; font-size: 1.25rem; }
       
-      /* Mobile Compact Spacing Fixes */
-      .contact-form-card { padding: 24px; }
-      .social-btn { padding: 16px; }
-      .social-icon, .compact-btn { width: 48px; height: 48px; font-size: 1.25rem; }
+      /* Make inputs mobile-friendly but shorter */
+      .contact-form-card { padding: 20px; gap: 16px; }
+      .form-control { min-height: 48px; }
+      textarea.form-control { min-height: 120px; }
+      footer { padding: 32px 0 48px; margin-top: 32px; }
+
+      /* 7. Modals */
+      .modal { width: calc(100% - 16px); }
+      .modal-header, .modal-body, .modal-footer { padding: 20px; }
+      .modal-body { gap: 24px; }
+      .modal-grid { gap: 24px; }
+      .gallery-hero { min-height: 200px; }
+      .gallery-shell { padding: 16px; gap: 12px; }
+      .meta-block { padding: 16px; }
+      .case-section { padding: 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1734,9 +1834,6 @@
         if (state.lastFocus && typeof state.lastFocus.focus === 'function') state.lastFocus.focus();
       };
 
-      // -----------------------------------------------------
-      // UPDATED FORM VALIDATION LOGIC
-      // -----------------------------------------------------
       const validateField = (field) => {
         const input = $(`[name="${field}"]`, els.contactForm);
         if (!input) return true; // Safety check
