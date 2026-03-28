@@ -325,7 +325,6 @@
     .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr); gap: 48px; align-items: center; min-height: calc(100vh - 160px); }
     .hero-copy { display: grid; gap: 24px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
-    .hero-utility { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
     .hero-frame {
       position: relative; min-height: 560px; border-radius: var(--radius-xl); border: 1px solid var(--line);
@@ -485,7 +484,7 @@
 
     footer { padding: 48px 0 80px; border-top: 1px solid var(--line); margin-top: 64px; }
     .footer-shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .footer-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 12px; flex-wrap: wrap; align-items: center;}
 
     @media (pointer: fine) {
       body.custom-cursor { cursor: none; }
@@ -535,8 +534,8 @@
       }
 
       /* ========================================================
-         HORIZONTAL SCROLLING CAROUSELS (MOBILE ONLY)
-         ======================================================== */
+          HORIZONTAL SCROLLING CAROUSELS (MOBILE ONLY)
+          ======================================================== */
       .services-grid, .process-grid, .cred-grid, .now-grid, .logo-grid {
         display: flex;
         flex-wrap: nowrap;
@@ -580,8 +579,8 @@
       /* 2. Compact the Hero */
       .hero { min-height: auto; }
       .hero-copy { gap: 16px; }
-      .hero-actions, .hero-utility, .footer-shell { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn, .hero-utility .btn, .hero-utility .chip, .contact-form-card .btn, .mobile-panel .btn { width: 100%; }
+      .hero-actions, .footer-shell { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn, .footer-links .btn, .footer-links .chip, .contact-form-card .btn, .mobile-panel .btn { width: 100%; }
       /* Remove forced height so it hugs the internal stack perfectly */
       .hero-frame { min-height: auto; padding: 20px; }
       .hero-stack { padding: 20px; gap: 16px; }
@@ -680,6 +679,9 @@
       </nav>
 
       <div class="nav-actions">
+        <span class="availability-pill hide-mobile">
+          <span class="availability-dot"></span> Available for Work
+        </span>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
           <i class="ph ph-moon"></i>
         </button>
@@ -724,22 +726,7 @@
               <i class="ph ph-paper-plane-tilt"></i> Let's Collaborate
             </a>
           </div>
-
-          <div class="hero-utility">
-            <span class="availability-pill">
-              <span class="availability-dot"></span> Available for Work
-            </span>
-            <button type="button" class="chip utility-copy-email">
-              <i class="ph ph-copy"></i> Copy Email
-            </button>
-            <button type="button" class="chip utility-copy-link">
-              <i class="ph ph-link"></i> Copy Portfolio Link
-            </button>
-            <span class="chip" id="viewCountChip" aria-label="Page views" style="cursor: default;">
-              <i class="ph ph-eye"></i> <span id="viewCounter">...</span>
-            </span>
           </div>
-        </div>
 
         <div class="reveal">
           <div class="hero-frame">
@@ -1185,15 +1172,9 @@
                 <i class="ph ph-instagram-logo"></i>
               </a>
             </div>
-
+            
             <div class="utility-row">
-              <button type="button" class="btn btn-secondary utility-copy-email">
-                <i class="ph ph-copy"></i> Copy email
-              </button>
-              <button type="button" class="btn btn-secondary utility-copy-link">
-                <i class="ph ph-link"></i> Copy portfolio link
-              </button>
-            </div>
+              </div>
           </div>
 
           <div class="card contact-form-card">
@@ -1249,11 +1230,22 @@
 
   <footer>
     <div class="container footer-shell">
-      <p class="small">© 2026 Nikitha Keshan. Engineered for scale and aesthetics.</p>
+      <div>
+        <p class="small">© 2026 Nikitha Keshan. Engineered for scale and aesthetics.</p>
+        <span class="chip" id="viewCountChip" style="margin-top: 12px; cursor: default;">
+          <i class="ph ph-eye"></i> <span id="viewCounter">...</span>
+        </span>
+      </div>
+      
       <div class="footer-links">
+        <button type="button" class="chip utility-copy-email">
+          <i class="ph ph-copy"></i> Copy Email
+        </button>
+        <button type="button" class="chip utility-copy-link">
+          <i class="ph ph-link"></i> Copy Portfolio Link
+        </button>
         <a href="#home" class="chip">Home</a>
         <a href="#work" class="chip">Projects</a>
-        <a href="#contact" class="chip">Contact</a>
         <a href="https://x.com/_zo_no_" target="_blank" rel="noreferrer" class="chip" aria-label="Twitter / X"><i class="ph ph-x-logo"></i></a>
         <a href="https://www.instagram.com/z.onoo/" target="_blank" rel="noreferrer" class="chip" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
       </div>
@@ -1991,24 +1983,19 @@
         });
       };
 
-      // --- ADDED: View Counter Logic ---
       const initViewCount = async () => {
         const counterEl = document.getElementById('viewCounter');
         const counterChip = document.getElementById('viewCountChip');
         if (!counterEl || !counterChip) return;
         
         try {
-          // Utilizing a free, serverless API designed for hitting/counting views
-          // Namespace: nikithakeshan, Key: portfolio_visits
           const res = await fetch('https://api.counterapi.dev/v1/nikithakeshan/portfolio_visits/up');
           if (!res.ok) throw new Error('API Response not ok');
           
           const data = await res.json();
-          // Format the number with commas (e.g. 1,234)
           counterEl.textContent = data.count.toLocaleString() + ' Views';
         } catch (error) {
           console.error('Failed to load view count:', error);
-          // Failsafe: hide the chip entirely if the API is down so it doesn't look broken
           counterChip.style.display = 'none';
         }
       };
@@ -2028,7 +2015,7 @@
         initCursor();
         initUtilities();
         initAnchorPolish();
-        initViewCount(); // Trigger the view counter on page load
+        initViewCount(); 
         
         document.addEventListener('keydown', handleGlobalKeys);
         window.addEventListener('scroll', updateHeaderState, { passive: true });
