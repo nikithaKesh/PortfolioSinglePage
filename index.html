@@ -46,7 +46,10 @@
         "email":"mailto:nikithakeshan@gmail.com",
         "sameAs":[
           "https://github.com/nikithaKesh",
-          "https://www.linkedin.com/in/nikitha-keshan-640927325/"
+          "https://www.linkedin.com/in/nikitha-keshan-640927325/",
+          "https://x.com/_zo_no_",
+          "https://web.facebook.com/nikitha.keshan.7",
+          "https://www.instagram.com/z.onoo/"
         ]
       },
       {
@@ -99,7 +102,6 @@
       --nav-bg-scrolled: rgba(255, 255, 255, 0.9);
       --input-bg: rgba(241, 244, 248, 0.9);
 
-      /* Standardized 8pt Grid Radii */
       --radius-pill: 999px;
       --radius-xl: 32px;
       --radius-lg: 24px;
@@ -164,7 +166,6 @@
       transition: background-color var(--transition), color var(--transition);
     }
 
-    /* Ambient Background Glow */
     body::before,
     body::after {
       content: ""; position: fixed; inset: auto; pointer-events: none; z-index: -2;
@@ -201,7 +202,6 @@
 
     .container { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
 
-    /* Standardized Section Spacing */
     .section { padding: 96px 0; position: relative; }
     .section-head { margin-bottom: 48px; max-width: 760px; }
 
@@ -231,7 +231,6 @@
     }
     @keyframes textShine { to { background-position: 200% center; } }
 
-    /* Cards */
     .card {
       border: 1px solid var(--line); background: var(--surface); backdrop-filter: blur(16px);
       border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);
@@ -240,7 +239,6 @@
     .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--line-strong); }
     .card-pad { padding: 32px; }
 
-    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px;
       padding: 0 24px; border-radius: var(--radius-pill); font-weight: 700; font-family: var(--font-display);
@@ -270,7 +268,6 @@
     .status-dot, .availability-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--g-green); animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--g-green-alpha); } 70% { box-shadow: 0 0 0 10px rgba(0,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
 
-    /* Scroll & Preloader */
     .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 1800; height: 4px; background: transparent; pointer-events: none; }
     .scroll-progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)); transition: width 100ms linear; }
 
@@ -281,7 +278,6 @@
     .g-dot:nth-child(1) { background: var(--g-blue); animation-delay: 0s; } .g-dot:nth-child(2) { background: var(--g-red); animation-delay: 0.1s; } .g-dot:nth-child(3) { background: var(--g-yellow); animation-delay: 0.2s; } .g-dot:nth-child(4) { background: var(--g-green); animation-delay: 0.3s; }
     @keyframes dotBounce { 0%, 100% { transform: translateY(0); opacity: 0.7; } 50% { transform: translateY(-12px); opacity: 1; } }
 
-    /* Navigation */
     .site-header { position: fixed; inset: 16px 0 auto; z-index: 1500; transition: padding var(--transition); }
     .nav-shell {
       width: min(calc(var(--container) + 16px), calc(100% - 32px)); margin-inline: auto; height: var(--nav-h);
@@ -322,7 +318,6 @@
     .mobile-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
     .mobile-panel .nav-link { min-height: 48px; font-size: 1.1rem; justify-content: flex-start; }
 
-    /* Layout Grids */
     main { padding-top: 120px; }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
@@ -351,7 +346,6 @@
     .metric-card { padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface-2); }
     .metric-card strong { display: block; font-size: 1.1rem; font-family: var(--font-display); margin-top: 8px; }
 
-    /* Aligned Grids */
     .about-shell, .contact-grid, .grid-2, .timeline-shell { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
     .about-deep-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
@@ -421,7 +415,19 @@
     .social-btn:hover { transform: translateX(4px); background: var(--surface-2); box-shadow: var(--shadow-soft); }
     .social-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
     .social-icon { width: 56px; height: 56px; border-radius: var(--radius-md); display: grid; place-items: center; font-size: 1.5rem; border: 1px solid var(--line); }
-    .social-icon.email { color: var(--g-red); background: var(--g-red-alpha); } .social-icon.linkedin { color: var(--g-blue); background: var(--g-blue-alpha); } .social-icon.github { color: var(--g-green); background: var(--g-green-alpha); }
+    
+    .social-icon.email { color: var(--g-red); background: var(--g-red-alpha); } 
+    .social-icon.linkedin { color: var(--g-blue); background: var(--g-blue-alpha); } 
+    .social-icon.whatsapp { color: #25D366; background: rgba(37, 211, 102, 0.15); }
+    
+    .social-compact-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .compact-btn { width: 56px; height: 56px; border-radius: var(--radius-md); display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); font-size: 1.5rem; transition: var(--transition); color: var(--muted); }
+    .compact-btn:hover { transform: translateY(-4px); background: var(--surface-2); box-shadow: var(--shadow-soft); }
+    .compact-btn.github:hover { color: var(--text); border-color: var(--line-strong); }
+    .compact-btn.twitter:hover { color: var(--text); border-color: var(--line-strong); }
+    .compact-btn.facebook:hover { color: #1877F2; border-color: #1877F2; background: rgba(24, 119, 242, 0.1); }
+    .compact-btn.instagram:hover { color: #E4405F; border-color: #E4405F; background: rgba(228, 64, 95, 0.1); }
+
     .utility-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
 
     .contact-form-card { display: grid; gap: 24px; padding: 40px; }
@@ -520,6 +526,11 @@
       .hero-frame { min-height: 400px; padding: 24px; }
       .hero-stack { padding: 24px; }
       .metric-grid { grid-template-columns: 1fr; }
+      
+      /* Mobile Compact Spacing Fixes */
+      .contact-form-card { padding: 24px; }
+      .social-btn { padding: 16px; }
+      .social-icon, .compact-btn { width: 48px; height: 48px; font-size: 1.25rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1021,7 +1032,7 @@
 
         <div class="contact-grid reveal">
           <div class="contact-panel">
-            <p class="lead" style="margin-bottom: 16px;">Whether you need a custom business automation system, a robust web platform, or are looking for a dedicated developer to join your team, my inbox is open.</p>
+            <p class="lead" style="margin-bottom: 8px;">Whether you need a custom business automation system, a robust web platform, or are looking for a dedicated developer to join your team, my inbox is open.</p>
 
             <a href="mailto:nikithakeshan@gmail.com" class="social-btn">
               <div class="social-main">
@@ -1029,6 +1040,17 @@
                 <div>
                   <span class="mono" style="display:block; margin-bottom: 6px;">Email</span>
                   <span class="title-sm">nikithakeshan@gmail.com</span>
+                </div>
+              </div>
+              <i class="ph ph-arrow-up-right"></i>
+            </a>
+            
+            <a href="https://api.whatsapp.com/send/?phone=%2B94764849127&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer" class="social-btn">
+              <div class="social-main">
+                <div class="social-icon whatsapp"><i class="ph ph-whatsapp-logo"></i></div>
+                <div>
+                  <span class="mono" style="display:block; margin-bottom: 6px;">WhatsApp</span>
+                  <span class="title-sm">+94 76 484 9127</span>
                 </div>
               </div>
               <i class="ph ph-arrow-up-right"></i>
@@ -1045,16 +1067,21 @@
               <i class="ph ph-arrow-up-right"></i>
             </a>
 
-            <a href="https://github.com/nikithaKesh" target="_blank" rel="noreferrer" class="social-btn">
-              <div class="social-main">
-                <div class="social-icon github"><i class="ph ph-github-logo"></i></div>
-                <div>
-                  <span class="mono" style="display:block; margin-bottom: 6px;">Code</span>
-                  <span class="title-sm">GitHub Repositories</span>
-                </div>
-              </div>
-              <i class="ph ph-arrow-up-right"></i>
-            </a>
+            <div class="mono" style="margin-top: 8px;">Find me elsewhere</div>
+            <div class="social-compact-row">
+              <a href="https://github.com/nikithaKesh" target="_blank" rel="noreferrer" class="compact-btn github" aria-label="GitHub">
+                <i class="ph ph-github-logo"></i>
+              </a>
+              <a href="https://x.com/_zo_no_" target="_blank" rel="noreferrer" class="compact-btn twitter" aria-label="Twitter / X">
+                <i class="ph ph-x-logo"></i>
+              </a>
+              <a href="https://web.facebook.com/nikitha.keshan.7" target="_blank" rel="noreferrer" class="compact-btn facebook" aria-label="Facebook">
+                <i class="ph ph-facebook-logo"></i>
+              </a>
+              <a href="https://www.instagram.com/z.onoo/" target="_blank" rel="noreferrer" class="compact-btn instagram" aria-label="Instagram">
+                <i class="ph ph-instagram-logo"></i>
+              </a>
+            </div>
 
             <div class="utility-row">
               <button type="button" class="btn btn-secondary utility-copy-email">
@@ -1112,6 +1139,8 @@
         <a href="#home" class="chip">Home</a>
         <a href="#work" class="chip">Projects</a>
         <a href="#contact" class="chip">Contact</a>
+        <a href="https://x.com/_zo_no_" target="_blank" rel="noreferrer" class="chip" aria-label="Twitter / X"><i class="ph ph-x-logo"></i></a>
+        <a href="https://www.instagram.com/z.onoo/" target="_blank" rel="noreferrer" class="chip" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
       </div>
     </div>
   </footer>
@@ -1221,6 +1250,10 @@
         portfolioUrl: 'https://nikithakesh.github.io/PortfolioSinglePage',
         githubUrl: 'https://github.com/nikithaKesh',
         linkedinUrl: 'https://www.linkedin.com/in/nikitha-keshan-640927325/',
+        twitterUrl: 'https://x.com/_zo_no_',
+        facebookUrl: 'https://web.facebook.com/nikitha.keshan.7',
+        instagramUrl: 'https://www.instagram.com/z.onoo/',
+        whatsappUrl: 'https://api.whatsapp.com/send/?phone=%2B94764849127&text&type=phone_number&app_absent=0',
         cvUrl: 'NikithaKeshan_CV.pdf'
       };
 
@@ -1806,8 +1839,8 @@
           dot.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
           ring.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
         });
-        document.body.addEventListener('mouseover', (event) => { if (event.target.closest('a, button, input, textarea, select, .project-card, .social-btn')) ring.classList.add('active'); }, true);
-        document.body.addEventListener('mouseout', (event) => { if (event.target.closest('a, button, input, textarea, select, .project-card, .social-btn')) ring.classList.remove('active'); }, true);
+        document.body.addEventListener('mouseover', (event) => { if (event.target.closest('a, button, input, textarea, select, .project-card, .social-btn, .compact-btn')) ring.classList.add('active'); }, true);
+        document.body.addEventListener('mouseout', (event) => { if (event.target.closest('a, button, input, textarea, select, .project-card, .social-btn, .compact-btn')) ring.classList.remove('active'); }, true);
       };
 
       const initUtilities = () => {
