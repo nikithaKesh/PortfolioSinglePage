@@ -26,8 +26,8 @@
   <meta name="twitter:image" content="https://nikithakesh.github.io/social-preview.png" />
   <meta name="twitter:image:alt" content="Nikitha Keshan portfolio preview" />
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234285F4'/><text x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='700' fill='white' text-anchor='middle'>N</text></svg>" />
-  <link rel="apple-touch-icon" href="https://nikithakesh.github.io/social-preview.png" />
+  <link rel="icon" type="image/png" href="N.png" />
+  <link rel="apple-touch-icon" href="N.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -269,12 +269,30 @@
     .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 1800; height: 4px; background: transparent; pointer-events: none; }
     .scroll-progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)); transition: width 100ms linear; }
 
+    /* Preloader Animation Updates */
     #preloader { position: fixed; inset: 0; z-index: 1900; display: grid; place-items: center; background: var(--bg); transition: opacity 400ms ease, visibility 400ms ease; }
     #preloader.is-hidden { opacity: 0; visibility: hidden; }
-    .preloader-dots { display: flex; gap: 12px; }
-    .g-dot { width: 16px; height: 16px; border-radius: 50%; animation: dotBounce 1s infinite ease-in-out; }
-    .g-dot:nth-child(1) { background: var(--g-blue); animation-delay: 0s; } .g-dot:nth-child(2) { background: var(--g-red); animation-delay: 0.1s; } .g-dot:nth-child(3) { background: var(--g-yellow); animation-delay: 0.2s; } .g-dot:nth-child(4) { background: var(--g-green); animation-delay: 0.3s; }
-    @keyframes dotBounce { 0%, 100% { transform: translateY(0); opacity: 0.7; } 50% { transform: translateY(-12px); opacity: 1; } }
+    
+    .preloader-brand {
+      width: 80px; height: 80px;
+      background: var(--g-blue);
+      border-radius: var(--radius-lg);
+      display: grid; place-items: center;
+      box-shadow: 0 16px 32px rgba(66, 133, 244, 0.2);
+      animation: preloaderFloat 2s ease-in-out infinite;
+    }
+    
+    .preloader-logo {
+      width: 40px; height: 40px;
+      object-fit: contain;
+      /* Inverts a black logo to white */
+      filter: brightness(0) invert(1);
+    }
+    
+    @keyframes preloaderFloat {
+      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 16px 32px rgba(66, 133, 244, 0.2); }
+      50% { transform: translateY(-12px) scale(1.05); box-shadow: 0 24px 48px rgba(66, 133, 244, 0.4); }
+    }
 
     .site-header {
       position: fixed;
@@ -536,6 +554,10 @@
     .cv-item-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
     .cv-item-desc { color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
 
+    .cv-contact-row { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+    .cv-icon-box { flex-shrink: 0; width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; color: var(--primary); font-size: 1.2rem; transition: var(--transition); }
+    .cv-contact-row:hover .cv-icon-box { background: var(--surface-3); transform: scale(1.05); }
+
     .toast { position: fixed; right: 24px; bottom: 24px; z-index: 1800; min-width: 300px; max-width: 420px; padding: 16px 24px; border-radius: var(--radius-md); background: var(--text); color: var(--bg); box-shadow: var(--shadow); transform: translateY(24px); opacity: 0; visibility: hidden; transition: var(--transition); }
     .toast.show { transform: translateY(0); opacity: 1; visibility: visible; }
     .back-to-top { position: fixed; right: 24px; bottom: 104px; z-index: 1400; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-soft); transform: translateY(24px); opacity: 0; visibility: hidden; transition: var(--transition); }
@@ -692,8 +714,8 @@
   </div>
 
   <div id="preloader" aria-hidden="true">
-    <div class="preloader-dots">
-      <span class="g-dot"></span><span class="g-dot"></span><span class="g-dot"></span><span class="g-dot"></span>
+    <div class="preloader-brand">
+      <img src="N.png" alt="Loading" class="preloader-logo" />
     </div>
   </div>
 
@@ -815,7 +837,7 @@
         <div class="about-shell reveal">
           <div class="card about-media">
             <img
-              src="1760549322866.png"
+              src="keshanimage.png"
               alt="Portrait of Nikitha Keshan"
               class="about-image"
               loading="lazy"
@@ -1193,30 +1215,38 @@
         <div class="services-grid reveal">
           <article class="card service-card" style="--service-accent: var(--g-blue-alpha); --service-fg: var(--g-blue); min-height: auto; padding: 24px;">
             <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.25rem;"><i class="ph ph-code"></i></div>
-            <h3 class="title-sm">Programming in Python &amp; Web Development</h3>
-            <div class="mono" style="margin-top: 12px; margin-bottom: 8px; color: var(--text); font-weight: 700;">University of Moratuwa</div>
-            <p class="small">(DP Education)</p>
+            <div style="margin-top: 8px;">
+              <h3 class="title-sm" style="margin-bottom: 4px;">Programming in Python &amp; Web Dev.</h3>
+              <div class="mono" style="color: var(--g-blue); margin-bottom: 12px;">University of Moratuwa</div>
+              <p class="small">DP Education</p>
+            </div>
           </article>
           
           <article class="card service-card" style="--service-accent: var(--g-red-alpha); --service-fg: var(--g-red); min-height: auto; padding: 24px;">
             <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.25rem;"><i class="ph ph-brain"></i></div>
-            <h3 class="title-sm">Foundation Program</h3>
-            <div class="mono" style="margin-top: 12px; margin-bottom: 8px; color: var(--text); font-weight: 700;">JAVA Institute</div>
-            <p class="small">Neuroscience, Programming, Robotic Science</p>
+            <div style="margin-top: 8px;">
+              <h3 class="title-sm" style="margin-bottom: 4px;">Foundation Program</h3>
+              <div class="mono" style="color: var(--g-red); margin-bottom: 12px;">JAVA Institute</div>
+              <p class="small">Neuroscience, Programming, Robotic Science</p>
+            </div>
           </article>
           
           <article class="card service-card" style="--service-accent: var(--g-yellow-alpha); --service-fg: #a77100; min-height: auto; padding: 24px;">
             <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.25rem;"><i class="ph ph-student"></i></div>
-            <h3 class="title-sm">G.C.E. Advanced Level 2022 (2023)</h3>
-            <div class="mono" style="margin-top: 12px; margin-bottom: 8px; color: var(--text); font-weight: 700;">D. S. Senanayake College - Beruwela</div>
-            <p class="small">Engineering Technology Stream<br>Results - C2s, S1.</p>
+            <div style="margin-top: 8px;">
+              <h3 class="title-sm" style="margin-bottom: 4px;">G.C.E. Advanced Level 2022 (2023)</h3>
+              <div class="mono" style="color: #a77100; margin-bottom: 12px;">D.S. Senanayake College - Beruwela</div>
+              <p class="small">Engineering Technology Stream<br>Results - C2s, S1.</p>
+            </div>
           </article>
           
           <article class="card service-card" style="--service-accent: var(--g-green-alpha); --service-fg: var(--g-green); min-height: auto; padding: 24px;">
             <div class="service-icon" style="width: 48px; height: 48px; font-size: 1.25rem;"><i class="ph ph-books"></i></div>
-            <h3 class="title-sm">G.C.E. Ordinary Level 2019</h3>
-            <div class="mono" style="margin-top: 12px; margin-bottom: 8px; color: var(--text); font-weight: 700;">Tissa Central College - Kalutara</div>
-            <p class="small">Results - 4As, 1Bs &amp; 4Cs.</p>
+            <div style="margin-top: 8px;">
+              <h3 class="title-sm" style="margin-bottom: 4px;">G.C.E. Ordinary Level 2019</h3>
+              <div class="mono" style="color: var(--g-green); margin-bottom: 12px;">Tissa Central College - Kalutara</div>
+              <p class="small">Results - 4As, 1Bs &amp; 4Cs.</p>
+            </div>
           </article>
         </div>
 
@@ -1474,22 +1504,27 @@
 
         <div>
           <div class="cv-section-title">Contact</div>
-          <div class="cv-item" style="display: grid; gap: 12px;">
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-phone" style="font-size: 1.2rem; color: var(--primary);"></i> +94 76 484 9127
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-map-pin" style="font-size: 1.2rem; color: var(--primary);"></i> No 215/B, Kandapanasala road, Maha Waskaduwa, Waskaduwa, Kalutara
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-envelope-simple" style="font-size: 1.2rem; color: var(--primary);"></i> <a href="mailto:nikithakeshan@gmail.com" style="text-decoration: underline;">nikithakeshan@gmail.com</a>
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-cake" style="font-size: 1.2rem; color: var(--primary);"></i> 27th October 2002
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-linkedin-logo" style="font-size: 1.2rem; color: var(--primary);"></i> <a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" rel="noreferrer" style="text-decoration: underline;">LinkedIn - Nikitha Keshan</a>
-            </p>
+          <div class="cv-item" style="display: grid; gap: 16px;">
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-phone"></i></div>
+              <span>+94 76 484 9127</span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-map-pin"></i></div>
+              <span>No 215/B, Kandapanasala road, Maha Waskaduwa, Waskaduwa, Kalutara</span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-envelope-simple"></i></div>
+              <span><a href="mailto:nikithakeshan@gmail.com" style="text-decoration: underline;">nikithakeshan@gmail.com</a></span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-cake"></i></div>
+              <span>27th October 2002</span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-linkedin-logo"></i></div>
+              <span><a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" rel="noreferrer" style="text-decoration: underline;">LinkedIn - Nikitha Keshan</a></span>
+            </div>
           </div>
         </div>
 
@@ -1591,25 +1626,29 @@
               <span class="cv-item-title">Thilina Hansamala</span>
             </div>
             <div class="mono" style="margin-bottom: 12px;">Head IT Administrator At CER Industries</div>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <i class="ph ph-envelope-simple" style="color: var(--primary);"></i> <a href="mailto:ajward@sjp.ac.lk" style="text-decoration: underline;">ajward@sjp.ac.lk</a>
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-phone" style="color: var(--primary);"></i> 075 654 7410
-            </p>
+            <div class="cv-contact-row" style="margin-bottom: 8px;">
+              <div class="cv-icon-box"><i class="ph ph-envelope-simple"></i></div>
+              <span><a href="mailto:ajward@sjp.ac.lk" style="text-decoration: underline;">ajward@sjp.ac.lk</a></span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-phone"></i></div>
+              <span>075 654 7410</span>
+            </div>
           </div>
 
-          <div class="cv-item">
+          <div class="cv-item" style="margin-top: 32px;">
             <div class="cv-item-header">
               <span class="cv-item-title">Manil Alahapperuma</span>
             </div>
             <div class="mono" style="margin-bottom: 12px;">Science Teacher at Tissa Central College (National College)</div>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <i class="ph ph-envelope-simple" style="color: var(--primary);"></i> <a href="mailto:pasinduera@navalokamedicare.com" style="text-decoration: underline;">pasinduera@navalokamedicare.com</a>
-            </p>
-            <p class="cv-item-desc" style="display: flex; align-items: center; gap: 8px;">
-              <i class="ph ph-phone" style="color: var(--primary);"></i> 071 882 9540
-            </p>
+            <div class="cv-contact-row" style="margin-bottom: 8px;">
+              <div class="cv-icon-box"><i class="ph ph-envelope-simple"></i></div>
+              <span><a href="mailto:pasinduera@navalokamedicare.com" style="text-decoration: underline;">pasinduera@navalokamedicare.com</a></span>
+            </div>
+            <div class="cv-contact-row">
+              <div class="cv-icon-box"><i class="ph ph-phone"></i></div>
+              <span>071 882 9540</span>
+            </div>
           </div>
         </div>
 
